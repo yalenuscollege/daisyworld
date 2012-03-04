@@ -1,0 +1,172 @@
+/* General page */
+html {
+	height: 100%;
+}
+
+body {
+	height: 100%;
+}
+
+/* Footer */
+footer {
+	margin-top: 60px;
+	padding-bottom: 40px;
+}
+
+/* Nav bar */
+@media (max-width: 979px) {
+	.navbar-fixed-top {
+		position: fixed; /* Fix for when Bootstrap tries to make it static */
+	}
+}
+
+/* Container */
+div.container {
+	height: 100%;
+	position: relative;
+	z-index: 5;
+}
+
+/* Sections */
+div.section {
+	padding-top: 30px;
+	overflow: hidden;
+}
+
+div.section div.section-inner {
+	border: 1px solid #000;
+	padding: 30px;
+	margin-top: 90px;
+	border-radius: 10px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	-o-border-radius: 10px;
+	background-color: #fff;
+}
+
+/* Header section */
+#home {
+	min-height: 550px;
+	height: 80%;
+	max-height: 800px;
+}
+
+#home > div.section-inner {
+	height: 100%;
+	border-width: 0;
+	padding-top: 90px;
+	margin-top: 0;
+	background-color: transparent;
+}
+
+#home h2 {
+	font-size: 80px;
+	line-height: 80px;
+	margin: 80px 0 0 40px;
+}
+
+#home h1 {
+	font-size: 120px;
+	line-height: 120px;
+	margin-left: 40px;
+}
+
+#home p {
+	float: right;
+	font-size: 30px;
+	line-height: 30px;
+	clear: both;
+	margin-top: 50px;
+}
+
+#home p.help {
+	font-size: 18px;
+	line-height: 18px;
+	float: left;
+}
+
+/* Background planets */
+div.planet {
+	background-color: #f0f;
+	position: fixed;
+}
+
+#planet1 {
+	width: 700px;
+	height: 700px;
+	border-radius: 350px;
+	top: 100px;
+	right: 50px;
+}
+
+#planet2 {
+	width: 700px;
+	height: 700px;
+	border-radius: 350px;
+	top: 1200px;
+	left: -100px;
+}
+
+#planet3 {
+	width: 200px;
+	height: 200px;
+	border-radius: 100px;
+	top: 400px;
+	left: 100px;
+}
+
+#planet4 {
+	width: 70px;
+	height: 70px;
+	border-radius: 35px;
+	top: 800px;
+	left: 50%;
+}
+
+#planet5 {
+	width: 70px;
+	height: 70px;
+	border-radius: 35px;
+	top: 1000px;
+	left: -20px;
+}
+
+#planet6 {
+	width: 70px;
+	height: 70px;
+	border-radius: 35px;
+	top: 1500px;
+	right: -20px;
+}
+
+#planet7 {
+	width: 300px;
+	height: 300px;
+	border-radius: 150px;
+	top: 1500px;
+	left: 300px;
+}
+
+#planet8 {
+	width: 250px;
+	height: 250px;
+	border-radius: 125px;
+	top: 1800px;
+	left: 50px;
+}
+
+#planet9 {
+	width: 250px;
+	height: 250px;
+	border-radius: 125px;
+	top: 1200px;
+	right: 150px;
+}
+
+#planet10 {
+	width: 70px;
+	height: 70px;
+	border-radius: 35px;
+	top: 3500px;
+	right: 70px;
+}
