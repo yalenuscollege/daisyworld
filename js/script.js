@@ -15,3 +15,19 @@ $(function() {
 	});
 	
 });
+
+var tempstack = [];
+var albedostack= [];
+var daisy1areastack = [];
+var daisy2areastack = [];
+
+function runDaisyWorld() {
+	
+	DaisyWorld.execute(0.25, 2.0, 0.01, function(e) {
+		tempstack.push(e.pTemperature - 273);
+		albedostack.push(e.pAlbedo);
+		daisy1areastack.push(e.daisies[0]["Area"]);
+		daisy2areastack.push(e.daisies[1]["Area"]);
+	}, function() { console.log("Done"); });
+	
+}

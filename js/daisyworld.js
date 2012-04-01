@@ -1,5 +1,5 @@
 /*
-* JS impl of daisyworld functions
+* JS impl of daisyworld simulation
 *
 * (C) 2012 Chris Alexander
 * siu07cja@reading.ac.uk / siu07cja@gmail.com
@@ -36,7 +36,8 @@ var DaisyWorld = {
 	pTemperature: 0,
 	
 	// Solar flux density constant
-	solarFluxDensityConstant: 3668,
+	//solarFluxDensityConstant: 3399,
+	solarFluxDensityConstant: 91763426350,
 	
 	// Stefan-Boltzmann constant
 	sbConstant: 5.67032,
@@ -46,6 +47,9 @@ var DaisyWorld = {
 	
 	// Death rate for daisies
 	globalDeathRate: 0.3,
+	
+	// How well to converge
+	similarityFactor: 1000,
 	
 	// How many convergence steps when updating the area coverage at each luminosity
 	convergenceSteps: 1000,
@@ -67,6 +71,12 @@ var DaisyWorld = {
 		for (var i = 0; i < iterations; i++) {
 			// Run the step
 			var res = this.runStep(currentLumens);
+			res["Lumens"] = {
+				"Start": startLumens,
+				"End": endLumens,
+				"Step": lumenStep,
+				"Current": currentLumens
+			};
 			// Call back the run callback function
 			stepCallback(res);
 			// Move to next lumen value
@@ -85,10 +95,10 @@ var DaisyWorld = {
 		for (var i = 0; i < this.daisies.length; i++) {
 			// Reset temp
 			this.daisies[i]["Temperature"] = 0;
-			this.daisies[i]["Population"] = 0;
 			this.daisies[i]["Birthrate"] = 0;
 			this.daisies[i]["Converged"] = 0;
-			this.daisies[i]["LastAreaValue"] = 2;
+			this.daisies[i]["Area"] = 0.01;
+			this.daisies[i]["LastArea"] = 2;
 		}
 		
 		// Reset parameters
@@ -101,14 +111,11 @@ var DaisyWorld = {
 	resetPopulations: function() {
 	
 		for (var i = 0; i < this.daisies.length; i++) {
-			if (this.daisies[i]["Population"] < 0.01 && this.daisies[i]["Population"] > 0) {
-				this.daisies[i]["Population"] = 0.01;
+			if (this.daisies[i]["Area"] < 0.01) {
+				this.daisies[i]["Area"] = 0.01;
 			}
-			if (this.daisies[i]["Population"] > 1) {
-				this.daisies[i]["Population"] = 1;
-			}
-			if (this.daisies[i]["Population"] < 0) {
-				this.daisies[i]["Population"] = 0;
+			if (this.daisies[i]["Area"] > 1) {
+				this.daisies[i]["Area"] = 1;
 			}
 		}
 	
@@ -121,18 +128,19 @@ var DaisyWorld = {
 	
 		this.resetPopulations();
 	
-		for (var i = 0; i < this.convergenceSteps; i++) {
+		for (var j = 0; j < this.convergenceSteps; j++) {
 			
 			this.planetAlbedo();
 			this.planetTemperature(lumens);
 			this.localTemperature(lumens);
 			this.birthrate();
 			this.areaChange();
-			break;
-			for (var i = 0; i < this.daisies.length; i++) {
+			this.resetPopulations();
+			
+			/*for (var i = 0; i < this.daisies.length; i++) {
 				if (this.daisies[i]["Converged"] == 0) {
 					// This daisy is not converged yet
-					if (Math.floor(this.daisies[i]["Area"]*100) == Math.floor(this.daisies[i]["LastArea"])) {
+					if (Math.floor(this.daisies[i]["Area"]*this.similarityFactor) == Math.floor(this.daisies[i]["LastArea"]*this.similarityFactor)) {
 						converged++;
 						this.daisies[i]["Converged"] = 1;
 					} else {
@@ -143,8 +151,10 @@ var DaisyWorld = {
 			
 			if (converged >= this.daisies.length) {
 				break;
-			}
+			}*/
 		}
+	
+		return DaisyWorld;
 	
 	},
 	
@@ -156,8 +166,8 @@ var DaisyWorld = {
 	
 		// Iterate through all of the daisies, adding their population*albedo
 		for (var i = 0; i < this.daisies.length; i++) {
-			sum += this.daisies[i]["Albedo"] * this.daisies[i]["Population"];
-			totalPopulation += this.daisies[i]["Population"];
+			sum += this.daisies[i]["Albedo"] * this.daisies[i]["Area"];
+			totalPopulation += this.daisies[i]["Area"];
 		}
 		
 		sum += Math.max((1-totalPopulation), 0)*this.soilAlbedo;
@@ -167,21 +177,21 @@ var DaisyWorld = {
 		
 	},
 	
-	// Find planet temperature - note it actually returns it to its fourth power, but we use that later so not an issue :)
+	// Find planet temperature
 	planetTemperature: function(luminosity) {
 	
-		var temp = (luminosity * this.solarFluxDensityConstant * (1 - this.pAlbedo)) / this.sbConstant;
+		var temp = Math.sqrt(Math.sqrt((luminosity * this.solarFluxDensityConstant * (1 - this.pAlbedo)) / this.sbConstant));
 		
 		this.pTemperature = temp;
 		return temp;
 	
 	},
 	
-	// Find local temperatures - again to fourth powers
+	// Find local temperatures
 	localTemperature: function(luminosity) {
 	
 		for (var i = 0; i < this.daisies.length; i++) {
-			this.daisies[i]["Temperature"] = ((this.temperatureInsulation * luminosity * this.solarFluxDensityConstant * (this.pAlbedo - this.daisies[i]["Albedo"])) / this.sbConstant) + this.pTemperature;
+			this.daisies[i]["Temperature"] = Math.sqrt(Math.sqrt(((this.temperatureInsulation * luminosity * this.solarFluxDensityConstant * (this.pAlbedo - this.daisies[i]["Albedo"])) / this.sbConstant) + Math.pow(this.pTemperature, 4)));
 		}
 	
 	},
@@ -190,7 +200,7 @@ var DaisyWorld = {
 	birthrate: function() {
 	
 		for (var i = 0; i < this.daisies.length; i++) {
-			this.daisies[i]["Birthrate"] = 1 - (Math.pow(this.daisies[i]["Temperature"] - this.daisies[i]["IdealTemperature"], 2)/Math.pow(this.daisies[i]["IdealTemperature"] - this.daisies[i]["MaxTemperature"], 2));
+			this.daisies[i]["Birthrate"] = 1 - (Math.pow(this.daisies[i]["Temperature"] - (this.daisies[i]["IdealTemperature"] + 273), 2)/Math.pow(this.daisies[i]["IdealTemperature"] - this.daisies[i]["MaxTemperature"], 2));
 		}
 	
 	},
@@ -206,7 +216,7 @@ var DaisyWorld = {
 		barren = 1 - barren;
 	
 		for (var i = 0; i < this.daisies.length; i++) {
-			this.daisies[i]["Area"] += this.daisies[i]["Area"] * (this.daisies[i]["Birthrate"]*barren - this.globalDeathRate);
+			this.daisies[i]["Area"] += this.daisies[i]["Area"] * ((this.daisies[i]["Birthrate"]*barren) - this.globalDeathRate);
 		}
 	
 	}
