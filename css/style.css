@@ -10,7 +10,11 @@ body {
 /* Footer */
 footer {
 	margin-top: 60px;
-	padding-bottom: 40px;
+	padding-bottom: 600px;
+}
+
+footer p {
+	padding: 10px;
 }
 
 /* Nav bar */
@@ -31,18 +35,84 @@ div.container {
 div.section {
 	padding-top: 30px;
 	overflow: hidden;
+	margin-left: -1px;
+	margin-right: -1px;
 }
 
 div.section div.section-inner,
-#home span.header, #home p.message {
+#home span.header, #home p.message,
+footer p {
 	border: 1px solid #000;
-	padding: 30px;
-	margin-top: 90px;
 	border-radius: 10px;
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
 	-o-border-radius: 10px;
 	background-color: #fff;
+}
+
+div.section div.section-inner {
+	padding: 30px 0;
+	margin-top: 90px;
+	position: relative;
+}
+
+/* Rows */
+div.row {
+	clear: both;
+	margin-bottom: 30px;
+}
+
+div.row div[class*="span"]:first-child > * {
+	margin-left: 30px;
+}
+
+div.row div[class*="span"]:last-child > * {
+	margin-right: 30px;
+}
+
+div.row.highlight {
+	background-color: #eee;
+	box-shadow: inset 0px 15px 20px -15px rgba(0,0,0,0.5), inset 0px -15px 20px -15px rgba(0,0,0,0.5);
+	border: 1px solid #000;
+	border-width: 1px 0;
+}
+
+div.row.highlight div[class*="span"] {
+	height: 460px;
+	padding: 20px 0;
+	overflow: hidden;
+}
+
+div.row.highlight > div[class*="span"]:first-child {
+	border-left: 1px solid #000;
+	margin-left: 19px;
+}
+
+@media (max-width: 767px) {
+	div.row.highlight > div[class*="span"]:first-child {
+		margin-left: -1px;
+	}
+}
+
+@media (min-width: 1200px) {
+	div.row.highlight > div[class*="span"]:first-child {
+		margin-left: 29px;
+	}
+}
+
+/* Padding correction */
+div.section div.section-inner h1 {
+	margin-left: 30px;
+}
+
+div.section div.previoussection,
+div.section div.nextsection {
+	float: right;
+	margin-right: 30px;
+}
+
+div.section-inner .leftmargin {
+	margin-left: 30px;
 }
 
 /* Header section */
@@ -92,12 +162,41 @@ div.section div.section-inner,
 	padding: 20px;
 }
 
+/* Builder */
+.graphbox {
+	width: 50%;
+	float: left;
+	margin-right: 0 !important;
+	height: 200px;
+}
+
+.graphbox .graph {
+	
+}
+
+.worldbox {
+	width: 100%;
+	float: left;
+}
+
 /* Background planets */
 div.planet {
 	background-color: #999;
 	position: fixed;
 	background-image: url(../img/daisyworld.png);
 	background-position: center center;
+}
+
+div.planet.inline {
+	position: relative;
+}
+
+div.planet.inline.right {
+	float: right;
+}
+
+div.planet.inline.center {
+	margin: 0px auto !important;
 }
 
 #planet1 {
@@ -178,4 +277,28 @@ div.planet {
 	border-radius: 35px;
 	top: 3500px;
 	right: 70px;
+}
+
+div.planet.p50 {
+	width: 50px;
+	height: 50px;
+	border-radius: 25px;
+}
+
+div.planet.p100 {
+	width: 100px;
+	height: 100px;
+	border-radius: 50px;
+}
+
+div.planet.p150 {
+	width: 150px;
+	height: 150px;
+	border-radius: 75px;
+}
+
+div.planet.p200 {
+	width: 200px;
+	height: 200px;
+	border-radius: 100px;
 }

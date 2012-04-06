@@ -19,6 +19,11 @@
 		
 		<script src="js/libs/modernizr-2.5.3-respond-1.1.0.min.js"></script>
 		
+		<script src="https://www.google.com/jsapi"></script>
+		<script>
+			google.load('visualization', '1.0', {'packages':['corechart']});
+		</script>
+		
 	</head>
 	<body data-spy="scroll" data-offset="90">
 	<!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
@@ -75,56 +80,182 @@
 			<div class="section" id="guide">
 				<div class="section-inner">
 					<h1>Site Guide</h1>
-					<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+					<div class="previoussection">Previous section: <a href="#home" class="animate">Home</a>.</div>
+					<div class="row">
+						<div class="span4">
+							<div class="planet inline center p150"></div>
+						</div>
+						<div class="span8">
+							<h2>Discover DaisyWorld</h2>
+							<p>The aim of this site is to teach you about DaisyWorld, a notional planet conceived to evaluate the gaia hypothesis and to attempt to model relationships between a planet's habitat and its plant life.</p>
+							<p>The various sections of this website give detailed information about DaisyWorld and what the model has achieved since its conception. There is also an opportunity to model your own DaisyWorld with a novel JavaScript implementation of the model.</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="span8">
+							<h2>Getting Around</h2>
+							<p>The site is split up into smaller sections for you to navigate more easily.</p>
+							<p>You can use the navigation bar at the top to skip from section to section across the site</p>
+							<p>You can also use the next and previous section links at the top and bottom of each section to jump to the nearby sections.</p>
+							<p>Alternatively, use your mouse's scroll wheel or arrow keys to go down the page - one section follows another.</p>
+						</div>
+						<div class="span4">
+							<img src="img/navigation.png" alt="Navigation" style="display: block; margin: 0 auto; width: 250px; height: 150px" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="span4">
+							<img src="img/chrome.png" alt="Google Chrome logo" style="margin: 0 auto; width: 150px; height: 150px; display: block;" />
+						</div>
+						<div class="span8">
+							<h2>Recommended capabilities</h2>
+							<p>This site uses the latest standards in web technology. JavaScript should be enabled in whichever browser you use for the DaisyWorld simulation to work.</p>
+							<p>It is advised that either the latest version of Google Chrome or Mozilla Firefox is used to browse this site. They are available from the following websites: <a href="http://google.com/chrome" target="_blank">Google Chrome</a>. <a href="http://firefox.com" target="_blank">Mozilla Firefox</a>. They are also available on all of the SSE lab PCs.</p>
+							<p>The minimum recommended screen resolution is 1024x768 pixels. All SSE lab PCs exceed this resolution. The optimal viewing resolution is 1680x1050 pixels.</p>
+						</div>
+					</div>
+					<div class="nextsection">Next section: <a href="#about" class="animate">About DaisyWorld</a>.</div>
 				</div>
 			</div>
 			
 			<div class="section" id="about">
 				<div class="section-inner">
 					<h1>About DaisyWorld</h1>
+					<div class="previoussection">Previous section: <a href="#guide" class="animate">Site Guide</a>.</div>
 					<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+					<div class="nextsection">Next section: <a href="#maths" class="animate">DaisyWorld Maths</a>.</div>
 				</div>
 			</div>
 			
 			<div class="section" id="maths">
 				<div class="section-inner">
 					<h1>DaisyWorld Maths</h1>
+					<div class="previoussection">Previous section: <a href="#about" class="animate">About DaisyWorld</a>.</div>
 					<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+					<div class="nextsection">Next section: <a href="#purpose" class="animate">DaisyWorld's Purpose</a>.</div>
 				</div>
 			</div>
 			
 			<div class="section" id="purpose">
 				<div class="section-inner">
 					<h1>DaisyWorld's Purpose</h1>
+					<div class="previoussection">Previous section: <a href="#maths" class="animate">DaisyWorld Maths</a>.</div>
 					<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+					<div class="nextsection">Next section: <a href="#creators" class="animate">The Creators of DaisyWorld</a>.</div>
 				</div>
 			</div>
 			
 			<div class="section" id="creators">
 				<div class="section-inner">
 					<h1>The Creators of DaisyWorld</h1>
+					<div class="previoussection">Previous section: <a href="#purpose" class="animate">DaisyWorld's Purpose</a>.</div>
 					<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+					<div class="nextsection">Next section: <a href="#critique" class="animate">Critiques of Daisy World</a>.</div>
 				</div>
 			</div>
 			
 			<div class="section" id="critique">
 				<div class="section-inner">
 					<h1>Critiques of DaisyWorld</h1>
+					<div class="previoussection">Previous section: <a href="#creators" class="animate">The Creators of DaisyWorld</a>.</div>
 					<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+					<div class="nextsection">Next section: <a href="#build" class="animate">Build your own DaisyWorld</a>.</div>
 				</div>
 			</div>
 			
 			<div class="section" id="build">
 				<div class="section-inner">
 					<h1>Build your own DaisyWorld</h1>
-					<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+					<div class="previoussection">Previous section: <a href="#critique" class="animate">Critiques of DaisyWorld</a>.</div>
+					<p class="leftmargin" style="clear: both;">Here you can create your own DaisyWorld. <a class="btn btn-success" id="helpbtn" title="Click me and I will show you help">Show me how</a>
+					<div class="row highlight" id="simzone">
+						<div class="span4">
+							<h2>DaisyWorld Parameters</h2>
+							<form class="form-horizontal" id="simform">
+								<fieldset>
+									<legend data-placement="right" title="Modify these parameters to see how DaisyWorld reacts.">Sun behaviour</legend>
+									<div class="control-group">
+										<label class="control-label" for="startlumens">Start luminosity</label>
+										<div class="controls">
+											<input type="text" class="input-small" id="startlumens" value="0.25" title="How intense DaisyWorld's sun starts off in the simulation.">
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label" for="endlumens">End luminosity</label>
+										<div class="controls">
+											<input type="text" class="input-small" id="endlumens" value="2.0" title="The intensity the sun reaches at the end of the simulation.">
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label" for="lumenstep">Luminosity step size</label>
+										<div class="controls">
+											<input type="text" class="input-small" id="lumenstep" value="0.01" title="The step size of the luminosity. Lower gives better simulation but takes longer.">
+										</div>
+									</div>
+								</fieldset>
+								<fieldset>
+									<legend data-placement="right" title="All of the form fields have help on them. It will appear when you go to change the value.">Planet properties</legend>
+									<div class="control-group">
+										<label class="control-label" for="soilalbedo">Soil albedo</label>
+										<div class="controls">
+											<input type="text" class="input-small" id="soilalbedo" value="0.5" title="How much light the bare soil absorbs. Range 0 to 1 only.">
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label" for="insulation">Temperature transfer</label>
+										<div class="controls">
+											<input type="text" class="input-small" id="insulation" value="0.12" title="How well energy transfers between the daisy regions. Range 0 to 1 only.">
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label" for="deathrate">Daisy death rate</label>
+										<div class="controls">
+											<input type="text" class="input-small" id="deathrate" value="0.3" title="What proportion of daisies die out between cycles. Range 0 to 1 only.">
+										</div>
+									</div>
+									<button type="submit" class="btn btn-danger" style="float: left;" title="Click here to reset the simulations' parameters">Reset parameters</button>
+									<button type="submit" class="btn btn-primary" style="float: right;" title="Click here to run the simulation.">Run Simulation</button>
+								</fieldset>
+							</form>
+						</div>
+						<div class="span8">
+							<div class="graphbox" id="graph1">
+								Graph
+							</div>
+							<div class="graphbox" id="graph2">
+								Graph
+							</div>
+							<div class="worldbox">
+								Derp
+							</div>
+						</div>
+					</div>
+					<div class="nextsection">Next section: <a href="#references" class="animate">References</a>.</div>
 				</div>
 			</div>
 			
 			<div class="section" id="references">
 				<div class="section-inner">
 					<h1>References</h1>
-					<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+					<div class="previoussection">Previous section: <a href="#build" class="animate">Build your own DaisyWorld</a>.</div>
+					<div class="leftmargin">
+						<h2>DaisyWorld</h2>
+						<p>The following references were used for the DaisyWorld information and implementation:</p>
+						<ul>
+							<li>A. J. Watson, J. E. Lovelock: <a href="http://onlinelibrary.wiley.com/doi/10.1111/j.1600-0889.1983.tb00031.x/abstract">Biological homeostatis of the global environment: the parable of Daisyworld</a>, Tellus 35B (1983)</li>
+							<li><a href="http://www.personal.rdg.ac.uk/~shsmchlr/alife/index.htm">CY4F8 notes</a> - lecture notes outlining DaisyWorld by Richard Mitchell</li>
+							<li><a href="http://gingerbooth.com/flash/daisyball/daisyworldmath.html">DaisyWorld, the Math</a> - GingerBooth, 2010.</li>
+						</ul>
+						<h2>Web technology</h2>
+						<p>DaisyWorldWeb is built with the latest web technologies. It would not be possible without the following projects:</p>
+						<ul>
+							<li><a href="http://twitter.github.com/bootstrap/">Bootstrap</a> - a UX framework by Twitter</li>
+							<li><a href="http://jquery.com/">jQuery</a> - Javascript library for making UI work easy</li>
+							<li><a href="https://code.google.com/apis/chart/">Google Chart API</a> - for the pretty charts</li>
+							<li><a href="http://markdalgleish.com/projects/stellar.js/demos/">Stellar JS</a> - for the background planets</li>
+							<li><a href="http://flesler.blogspot.co.uk/2007/10/jqueryscrollto.html">ScrollTo</a> - for the nice scrolling effects on link clicks</li>
+						</ul>
+					</div>
 				</div>
 			</div>
 
@@ -133,15 +264,17 @@
 			</footer>
 			
 		</div> <!-- /container -->
-		
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+
+		<script>
+			google.load("jquery", "1.7.1");
+		</script>
 		<script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.1.min.js"><\/script>')</script>
 
 		<script src="js/libs/bootstrap.min.js"></script>
 		
 		<script src="js/libs/jquery.stellar.js"></script>
 		<script src="js/libs/jquery.scrollTo-1.4.2-min.js"></script>
-
+		
 		<script src="js/script.js"></script>
 		<script src="js/daisyworld.js"></script>
 		<script>

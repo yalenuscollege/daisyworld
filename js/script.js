@@ -4,6 +4,33 @@ $(function() {
 	// Scrolling effects
 	$.stellar();
 	
+	// Visualisations
+	function drawChart() {
+
+		// Create the data table.
+		var data = new google.visualization.DataTable();
+		data.addColumn('string', 'Topping');
+		data.addColumn('number', 'Slices');
+		data.addRows([
+			['Mushrooms', 3],
+			['Onions', 1],
+			['Olives', 1],
+			['Zucchini', 1],
+			['Pepperoni', 2]
+		]);
+
+		// Set chart options
+		var options = {'title':'How Much Pizza I Ate Last Night',
+			'width':"100%",
+			'height':200
+		};
+
+		// Instantiate and draw our chart, passing in some options.
+		var chart = new google.visualization.PieChart(document.getElementById('graph1'));
+		chart.draw(data, options);
+	}
+	drawChart();
+	
 	// Scrolling nav effects
 	$("a.animate").on("click", function() {
 		var target = $(this).attr("href").replace("#", "");
@@ -12,6 +39,28 @@ $(function() {
 		}
 		$.scrollTo("#" + target, 1500, { onAfter: complete });
 		return false;
+	});
+	
+	$("#simform input.input-small").tooltip({
+		"animation": true,
+		"placement": "right",
+		"trigger": "focus"
+	});
+	$("#simform button, #simform legend").tooltip({
+		"animation": true,
+		"placement": "bottom",
+		"trigger": "manual"
+	});
+	$("#helpbtn").tooltip({
+		"animation": true,
+		"placement": "right"
+	});
+	
+	$("#helpbtn").on("click", function() {
+		$("#simform legend, #simform button").tooltip("show");
+	}).on("mouseout", function() {
+		$("#simform legend, #simform button").tooltip("hide");
+		$(this).tooltip("hide");
 	});
 	
 });
