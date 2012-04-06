@@ -179,6 +179,17 @@ div.section-inner .leftmargin {
 	float: left;
 }
 
+.worldbox table {
+	border: 1px solid #000;
+	margin: 10px 0 0 10px;
+	background-color: #ccc;
+}
+
+.worldbox table tr td {
+	width: 36px;
+	height: 38px;
+}
+
 /* Background planets */
 div.planet {
 	background-color: #999;

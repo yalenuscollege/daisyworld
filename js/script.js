@@ -46,20 +46,25 @@ $(function() {
 		"placement": "right",
 		"trigger": "focus"
 	});
-	$("#simform button, #simform legend").tooltip({
+	$("#simform button, #simform legend, .worldbox table").tooltip({
 		"animation": true,
 		"placement": "bottom",
 		"trigger": "manual"
 	});
+	$(".graphbox").tooltip({
+		"animation": true,
+		"placement": "top",
+		"trigger": "manual"
+	});
 	$("#helpbtn").tooltip({
 		"animation": true,
-		"placement": "right"
+		"placement": "top"
 	});
 	
 	$("#helpbtn").on("click", function() {
-		$("#simform legend, #simform button").tooltip("show");
+		$("#simform legend, #simform button, .worldbox table, .graphbox").tooltip("show");
 	}).on("mouseout", function() {
-		$("#simform legend, #simform button").tooltip("hide");
+		$("#simform legend, #simform button, .worldbox table, .graphbox").tooltip("hide");
 		$(this).tooltip("hide");
 	});
 	
