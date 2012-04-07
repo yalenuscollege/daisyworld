@@ -181,13 +181,21 @@ div.section-inner .leftmargin {
 
 .worldbox table {
 	border: 1px solid #000;
-	margin: 10px 0 0 10px;
+	margin: 10px 0 0;
 	background-color: #ccc;
 }
 
 .worldbox table tr td {
 	width: 36px;
 	height: 38px;
+}
+
+.worldbox table tr td.black {
+	background-image: url(../img/daisy-black.png) no-repeat;
+}
+
+.worldbox table tr td.white {
+	background-image: url(../img/daisy-white.png) no-repeat;
 }
 
 /* Background planets */
