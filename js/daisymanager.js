@@ -129,6 +129,10 @@ var DaisyManager = {
 		DaisyManager.graph1.draw(DaisyManager.graph1data, DaisyManager.graph1options);
 		DaisyManager.graph2.draw(DaisyManager.graph2data, DaisyManager.graph2options);		
 	
+		// Update the table
+		var numbers = {"Black": Math.floor(DaisyManager.daisyData["Black"][DaisyManager.renderStage]*100), "White": Math.floor(DaisyManager.daisyData["White"][DaisyManager.renderStage]*100)};
+		DaisyManager.updateTable(numbers);
+	
 		DaisyManager.renderStage++;
 		window.setTimeout(DaisyManager.renderStep, 50);
 	},
@@ -141,11 +145,32 @@ var DaisyManager = {
 		options.endLumens = parseFloat($("#endlumens").val());
 		options.lumenStep = parseFloat($("#lumenstep").val());
 		
-		DaisyWorld.soildAlbedo = parseFloat($("#soilalbedo").val());
+		DaisyWorld.soilAlbedo = parseFloat($("#soilalbedo").val());
 		DaisyWorld.temperatureInsulation = parseFloat($("#insulation").val());
 		DaisyWorld.globalDeathRate = parseFloat($("#deathrate").val());
 		
 		return options;
+	},
+	
+	// Updates the table rendering
+	updateTable: function(numbers) {
+	
+		$(".worldbox table td").each(function(k, v) {
+			$(v).removeClass("black").removeClass("white");
+		});
+		
+		for (var i = 0; i < numbers["Black"]-1; i++) {
+			var row = Math.floor(i / 20);
+			var col = Math.floor(i % 20);
+			$(".worldbox table tr:nth-child(" + (row+1) + ") td:nth-child(" + (col+1) + ")").addClass("black");
+		}
+		
+		for (var i = 0; i < numbers["White"]-1; i++) {
+			var row = 4 - Math.floor(i / 20);
+			var col = 19 - Math.floor(i % 20);
+			$(".worldbox table tr:nth-child(" + (row+1) + ") td:nth-child(" + (col+1) + ")").addClass("white");
+		}
+	
 	},
 	
 	// Reset the table

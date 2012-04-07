@@ -136,22 +136,6 @@ var DaisyWorld = {
 			this.birthrate();
 			this.areaChange();
 			this.resetPopulations();
-			
-			/*for (var i = 0; i < this.daisies.length; i++) {
-				if (this.daisies[i]["Converged"] == 0) {
-					// This daisy is not converged yet
-					if (Math.floor(this.daisies[i]["Area"]*this.similarityFactor) == Math.floor(this.daisies[i]["LastArea"]*this.similarityFactor)) {
-						converged++;
-						this.daisies[i]["Converged"] = 1;
-					} else {
-						this.daisies[i]["LastArea"] = this.daisies[i]["Area"];
-					}
-				}
-			}
-			
-			if (converged >= this.daisies.length) {
-				break;
-			}*/
 		}
 	
 		return DaisyWorld;

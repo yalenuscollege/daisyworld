@@ -188,14 +188,16 @@ div.section-inner .leftmargin {
 .worldbox table tr td {
 	width: 36px;
 	height: 38px;
+	background-repeat: no-repeat;
+	background-position: centre centre;
 }
 
 .worldbox table tr td.black {
-	background-image: url(../img/daisy-black.png) no-repeat;
+	background-image: url(../img/daisy-black.png);
 }
 
 .worldbox table tr td.white {
-	background-image: url(../img/daisy-white.png) no-repeat;
+	background-image: url(../img/daisy-white.png);
 }
 
 /* Background planets */
