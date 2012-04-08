@@ -62,7 +62,8 @@ div.row {
 	margin-bottom: 30px;
 }
 
-div.row div[class*="span"]:first-child > * {
+div.row div[class*="span"]:first-child > *,
+div.row div[class*="span"].hiddenfirstrow > * {
 	margin-left: 30px;
 }
 
@@ -83,19 +84,22 @@ div.row.highlight div[class*="span"] {
 	overflow: hidden;
 }
 
-div.row.highlight > div[class*="span"]:first-child {
+div.row.highlight > div[class*="span"]:first-child,
+div.row.highlight > div[class*="span"].hiddenfirstrow {
 	border-left: 1px solid #000;
 	margin-left: 19px;
 }
 
 @media (max-width: 767px) {
-	div.row.highlight > div[class*="span"]:first-child {
+	div.row.highlight > div[class*="span"]:first-child ,
+	div.row.highlight > div[class*="span"].hiddenfirstrow{
 		margin-left: -1px;
 	}
 }
 
 @media (min-width: 1200px) {
-	div.row.highlight > div[class*="span"]:first-child {
+	div.row.highlight > div[class*="span"]:first-child,
+	div.row.highlight > div[class*="span"].hiddenfirstrow {
 		margin-left: 29px;
 	}
 }
@@ -198,6 +202,26 @@ div.section-inner .leftmargin {
 
 .worldbox table tr td.white {
 	background-image: url(../img/daisy-white.png);
+}
+
+#build .span4 h2 {
+	float: left;
+}
+
+#daisyform fieldset {
+	margin-bottom: 20px;
+}
+
+#daisyform legend {
+	margin-bottom: 10px;
+}
+
+#daisyform legend + .control-group {
+	margin-top: 0px;
+}
+
+#daisyform .control-group {
+	margin-bottom: 5px;
 }
 
 /* Background planets */

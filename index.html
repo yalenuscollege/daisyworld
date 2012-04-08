@@ -167,10 +167,15 @@
 				<div class="section-inner">
 					<h1>Build your own DaisyWorld</h1>
 					<div class="previoussection">Previous section: <a href="#critique" class="animate">Critiques of DaisyWorld</a>.</div>
-					<p class="leftmargin" style="clear: both;">Here you can create your own DaisyWorld. <a class="btn btn-success" id="helpbtn" title="Click me and I will show you help">Show me how</a>
+					<p class="leftmargin" style="clear: both;">Here you can create your own DaisyWorld.</p>
+					<p class="leftmargin">Start off by running the standard simulation with the blue button below. Then, you can create your own parameters for DaisyWorld.</p>
 					<div class="row highlight" id="simzone">
-						<div class="span4">
-							<h2>DaisyWorld Parameters</h2>
+						<div class="span4" style="text-align: center;">
+							<button id="defaultrun" class="btn btn-primary btn-large" title="Click here to start with the default simulation" style="margin: 100px auto 0;">Run simulation</button>
+						</div>
+						<div class="span4 hidden hiddenfirstrow btntoggle">
+							<h2>World Parameters</h2>
+							<button class="btn btn-primary btn-small togglebtn ttip" style="float: right; margin-top: 5px;" title="Click here to go to the daisy setup page.">Daisy Properties</button>
 							<form class="form-horizontal" id="simform">
 								<fieldset>
 									<legend data-placement="right" title="Modify these parameters to see how DaisyWorld reacts.">Sun behaviour</legend>
@@ -213,9 +218,55 @@
 											<input type="text" class="input-small" id="deathrate" value="0.3" title="What proportion of daisies die out between cycles. Range 0 to 1 only.">
 										</div>
 									</div>
-									<button type="submit" class="btn btn-danger" style="float: left;" title="Click here to reset the simulations' parameters">Reset parameters</button>
-									<button type="submit" class="btn btn-primary" style="float: right;" title="Click here to run the simulation.">Run Simulation</button>
+									<button id="resetbtn" class="btn btn-danger" style="float: left;" title="Click here to reset the simulations' parameters">Reset parameters</button>
+									<a class="btn btn-success" id="helpbtn" title="Click me and I will show you help." style="margin-left: 30px;">Help</a>
+									<button id="runbtn" class="btn btn-primary" style="float: right;" title="Click here to run the simulation.">Run Simulation</button>
 								</fieldset>
+							</form>
+						</div>
+						<div class="span4 hidden hiddenfirstrow btntoggle">
+							<h2>Daisy Properties</h2>
+							<button class="btn btn-primary btn-small togglebtn" style="float: right; margin-top: 5px;">World Parameters</button>
+							<form class="form-horizontal" id="daisyform">
+								<fieldset>
+									<legend>Select daisies to modify</legend>
+									<select id="daisyselect">
+										<option value="White">White daisies</option>
+										<option value="Black">Black daisies</option>
+									</select>
+								</fieldset>
+								<fieldset>
+									<legend id="daisyname">White daisies</legend>
+									<div class="control-group">
+										<label class="control-label" for="enabled">Enabled</label>
+										<div class="controls">
+											<label class="checkbox">
+												<input type="checkbox" id="enabled">
+												<input type="hidden" id="daisy-id">
+											</label>
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label" for="albedo">Albedo</label>
+										<div class="controls">
+											<input type="text" class="input-small" id="albedo" title="How well the daisies absorb light.">
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label" for="ideal">Ideal temperature</label>
+										<div class="controls">
+											<input type="text" class="input-small" id="ideal" title="The ideal temperature for the daisies to grow at.">
+										</div>
+									</div>
+									<div class="control-group">
+										<label class="control-label" for="max">Maximum temperature</label>
+										<div class="controls">
+											<input type="text" class="input-small" id="max" title="The maximum temperature the daisies can survive at.">
+										</div>
+									</div>
+								</fieldset>
+								<button id="resetbtn2" class="btn btn-danger" style="float: left;">Reset Daisies</button>
+								<button class="btn btn-primary togglebtn" style="float: right;">Back to World Parameters</button>
 							</form>
 						</div>
 						<div class="span8">

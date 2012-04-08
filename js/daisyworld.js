@@ -16,16 +16,18 @@ var DaisyWorld = {
 			"Label": "White",
 			"Albedo": 0.75,
 			"IdealTemperature": 22.5,
-			"MaxTemperature": 40
+			"MaxTemperature": 40,
+			"Enabled": true
 		},
 		{
 			"Label": "Black",
 			"Albedo": 0.25,
 			"IdealTemperature": 22.5,
-			"MaxTemperature": 40
+			"MaxTemperature": 40,
+			"Enabled": true
 		}
 	],
-	
+
 	// Albedo of the soil
 	soilAlbedo: 0.5,
 	
@@ -150,8 +152,10 @@ var DaisyWorld = {
 	
 		// Iterate through all of the daisies, adding their population*albedo
 		for (var i = 0; i < this.daisies.length; i++) {
-			sum += this.daisies[i]["Albedo"] * this.daisies[i]["Area"];
-			totalPopulation += this.daisies[i]["Area"];
+			if (this.daisies[i]["Enabled"]) {
+				sum += this.daisies[i]["Albedo"] * this.daisies[i]["Area"];
+				totalPopulation += this.daisies[i]["Area"];
+			}
 		}
 		
 		sum += Math.max((1-totalPopulation), 0)*this.soilAlbedo;
@@ -175,7 +179,9 @@ var DaisyWorld = {
 	localTemperature: function(luminosity) {
 	
 		for (var i = 0; i < this.daisies.length; i++) {
-			this.daisies[i]["Temperature"] = Math.sqrt(Math.sqrt(((this.temperatureInsulation * luminosity * this.solarFluxDensityConstant * (this.pAlbedo - this.daisies[i]["Albedo"])) / this.sbConstant) + Math.pow(this.pTemperature, 4)));
+			if (this.daisies[i]["Enabled"]) {
+				this.daisies[i]["Temperature"] = Math.sqrt(Math.sqrt(((this.temperatureInsulation * luminosity * this.solarFluxDensityConstant * (this.pAlbedo - this.daisies[i]["Albedo"])) / this.sbConstant) + Math.pow(this.pTemperature, 4)));
+			}
 		}
 	
 	},
@@ -184,7 +190,9 @@ var DaisyWorld = {
 	birthrate: function() {
 	
 		for (var i = 0; i < this.daisies.length; i++) {
-			this.daisies[i]["Birthrate"] = 1 - (Math.pow(this.daisies[i]["Temperature"] - (this.daisies[i]["IdealTemperature"] + 273), 2)/Math.pow(this.daisies[i]["IdealTemperature"] - this.daisies[i]["MaxTemperature"], 2));
+			if (this.daisies[i]["Enabled"]) {
+				this.daisies[i]["Birthrate"] = 1 - (Math.pow(this.daisies[i]["Temperature"] - (this.daisies[i]["IdealTemperature"] + 273), 2)/Math.pow(this.daisies[i]["IdealTemperature"] - this.daisies[i]["MaxTemperature"], 2));
+			}
 		}
 	
 	},
@@ -195,12 +203,16 @@ var DaisyWorld = {
 		// Work out the barren area
 		var barren = 0;
 		for (var i = 0; i < this.daisies.length; i++) {
-			barren += this.daisies[i]["Area"];
+			if (this.daisies[i]["Enabled"]) {
+				barren += this.daisies[i]["Area"];
+			}
 		}
 		barren = 1 - barren;
 	
 		for (var i = 0; i < this.daisies.length; i++) {
-			this.daisies[i]["Area"] += this.daisies[i]["Area"] * ((this.daisies[i]["Birthrate"]*barren) - this.globalDeathRate);
+			if (this.daisies[i]["Enabled"]) {
+				this.daisies[i]["Area"] += this.daisies[i]["Area"] * ((this.daisies[i]["Birthrate"]*barren) - this.globalDeathRate);
+			}
 		}
 	
 	}
