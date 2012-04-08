@@ -37,7 +37,7 @@ var DaisyManager = {
 	load: function() {
 		this.reset();
 		this.setupHelp();
-		this.initialise();
+		//this.initialise();
 		$("#resetbtn").on("click", DaisyManager.reset);
 		$("#runbtn, #defaultrun").on("click", DaisyManager.go);
 		$("#defaultrun").tooltip("show");
