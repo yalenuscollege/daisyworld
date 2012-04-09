@@ -407,7 +407,11 @@ var DaisyManager = {
 		DaisyManager.graph2.draw(DaisyManager.graph2data, DaisyManager.graph2options);		
 	
 		// Update the table
-		var numbers = {"Black": Math.floor(DaisyManager.daisyData["Black"][DaisyManager.renderStage]*100), "White": Math.floor(DaisyManager.daisyData["White"][DaisyManager.renderStage]*100)};
+		var numbers = {};
+		for (var i = 0; i < DaisyWorld.daisies.length; i++) {
+			var label = DaisyWorld.daisies[i].Label;
+			numbers[label] = Math.floor(DaisyManager.daisyData[label][DaisyManager.renderStage]*100);
+		}
 		DaisyManager.updateTable(numbers);
 	
 		DaisyManager.renderStage++;
@@ -434,19 +438,21 @@ var DaisyManager = {
 	
 		// Clear the table
 		$(".worldbox table td").each(function(k, v) {
-			$(v).removeClass("black").removeClass("white");
+			$(v).removeClass("occupied").children("img").css("opacity", 0);
 		});
 		
-		for (var i = 0; i < numbers["Black"]-1; i++) {
-			var row = Math.floor(i / 20);
-			var col = Math.floor(i % 20);
-			$(".worldbox table tr:nth-child(" + (row+1) + ") td:nth-child(" + (col+1) + ")").addClass("black");
-		}
-		
-		for (var i = 0; i < numbers["White"]-1; i++) {
-			var row = 4 - Math.floor(i / 20);
-			var col = 19 - Math.floor(i % 20);
-			$(".worldbox table tr:nth-child(" + (row+1) + ") td:nth-child(" + (col+1) + ")").addClass("white");
+		var counter = 0;
+		for (var i = 0; i < DaisyWorld.daisies.length; i++) {
+			var label = DaisyWorld.daisies[i].Label;
+			var opacity = DaisyWorld.daisies[i].Albedo;
+			if (numbers[label] && numbers[label] > 1) {
+				var startcounter = counter;
+				for (counter; counter < startcounter + numbers[label]; counter++) {
+					var row = Math.floor(counter / 20);
+					var col = Math.floor(counter % 20);
+					$(".worldbox table tr:nth-child(" + (row+1) + ") td:nth-child(" + (col+1) + ")").addClass("occupied").children("img").css("opacity", opacity);
+				}
+			}
 		}
 	
 	},
@@ -457,7 +463,7 @@ var DaisyManager = {
 		for (var i = 0; i < 5; i++) {
 			$(".worldbox table").append("<tr></tr>");
 			for (var j = 0; j < 20; j++) {
-				$(".worldbox table tr:last-child").append("<td></td>");
+				$(".worldbox table tr:last-child").append("<td><img src=\"../img/daisy-white.png\" /></td>");
 				this.tableData.push("soil");
 			}
 		}

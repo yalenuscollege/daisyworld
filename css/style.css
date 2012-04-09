@@ -218,12 +218,12 @@ div.section-inner .leftmargin {
 	background-position: centre centre;
 }
 
-.worldbox table tr td.black {
-	background-image: url(../img/daisy-black.png);
+.worldbox table tr td img {
+	opacity: 0;
 }
 
-.worldbox table tr td.white {
-	background-image: url(../img/daisy-white.png);
+.worldbox table tr td.occupied {
+	background-image: url(../img/daisy-black.png);
 }
 
 #build .span4 h2 {
