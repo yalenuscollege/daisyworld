@@ -147,6 +147,12 @@ var DaisyManager = {
 			DaisyManager.populateDaisyData(DaisyWorld.daisies[0].Label);
 			return false;
 		});
+		$("#stoprender").on("click", function(e) {
+			e.preventDefault();
+			$(this).addClass("hidden");
+			DaisyManager.stopRender = true;
+			return false;
+		});
 	},
 	
 	// Populates daisy data in the form
@@ -215,6 +221,7 @@ var DaisyManager = {
 	// Update UI for sim start
 	simStart: function() {
 		$("#simform input, #simform button, #defaultrun, .togglebtn").attr("disabled", "disabled");
+		$("#stoprender").removeClass("hidden");
 	},
 	
 	// Update UI on sim end
@@ -225,6 +232,7 @@ var DaisyManager = {
 			$("#simform").parent().removeClass("hidden");
 			$("#helpbtn").tooltip("show");
 		}
+		$("#stoprender").addClass("hidden");
 	},
 	
 	// Bound to when the reset button is clicked
@@ -307,12 +315,15 @@ var DaisyManager = {
 			"width": "100%",
 			"height": 200,
 			"backgroundColor": "#eee",
-			"colors": ["white","black"],
+			"colors": ["black"],
 			"hAxis": {
 				"title": "Time"
 			},
 			"vAxis": {
 				"title": "Temperature"
+			},
+			"legend": {
+				"position": "none"
 			}
 		};
 		var options2 = {
@@ -320,7 +331,7 @@ var DaisyManager = {
 			"width": "100%",
 			"height": 200,
 			"backgroundColor": "#eee",
-			"colors": ["white","black", "red", "green", "purple", "orange", "blue", "yellow", "pink", "grey"],
+			"colors": [],
 			"hAxis": {
 				"title": "Time"
 			},
@@ -361,12 +372,16 @@ var DaisyManager = {
 	
 	},
 	
+	// Flag to stop the render
+	stopRender: false,
+	
 	// Render a single step on to the output
 	renderStep: function() {
 
 		// Barf out if we reached the end
-		if (DaisyManager.renderStage >= DaisyManager.tempData.length) {
+		if (DaisyManager.renderStage >= DaisyManager.tempData.length || DaisyManager.stopRender) {
 			DaisyManager.simEnd();
+			DaisyManager.stopRender = false;
 			return;
 		}
 	
@@ -375,6 +390,11 @@ var DaisyManager = {
 			// Add columns on first run only
 			for (var key in DaisyManager.daisyData) {
 				DaisyManager.graph2data.addColumn("number", key);
+				DaisyManager.graph2options.colors = [];
+				for (var i = 0; i < DaisyWorld.daisies.length; i++) {
+					var a = Math.round(DaisyWorld.daisies[i].Albedo * 255);
+					DaisyManager.graph2options.colors.push("rgb(" + a + "," + a + "," + a + ")");
+				}
 			}
 		}
 		DaisyManager.graph1data.addRow([DaisyManager.renderStage, DaisyManager.tempData[DaisyManager.renderStage]]);
@@ -462,6 +482,9 @@ var DaisyManager = {
 		},
 		"vAxis": {
 			"title": "Birth rate"
+		},
+		"legend": {
+			"position": "none"
 		}
 	},
 	
