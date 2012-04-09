@@ -37,7 +37,19 @@ var DaisyManager = {
 	load: function() {
 		this.reset();
 		this.setupHelp();
-		//this.initialise();
+		$("#interactive-go").on("click", function(e) {
+			e.preventDefault();
+			DaisyManager.interactive();
+			return false;
+		});
+		$("#interactive-reset").on("click", function(e) {
+			e.preventDefault();
+			$("#interactive-opt").val("22.5");
+			$("#interactive-max").val("40");
+			DaisyManager.interactive();
+			return false;
+		});
+		DaisyManager.interactive();
 		$("#resetbtn").on("click", DaisyManager.reset);
 		$("#runbtn, #defaultrun").on("click", DaisyManager.go);
 		window.setTimeout(function() {
@@ -365,6 +377,47 @@ var DaisyManager = {
 				this.tableData.push("soil");
 			}
 		}
+	},
+	
+	// Interactive chart object
+	interactiveChart: false,
+	
+	// Options for interactive chart
+	interactiveChartOptions: {
+		"title": "Daisy birth rate",
+		"width": "100%",
+		"height": 200,
+		"backgroundColor": "whiteSmoke",
+		"colors": ["black"],
+		"hAxis": {
+			"title": "Temperature"
+		},
+		"animation": {
+			"duration": 1000,
+			"easing": "inAndOut"
+		},
+		"vAxis": {
+			"title": "Birth rate"
+		}
+	},
+	
+	// Renders the interactive graph in maths section
+	interactive: function() {
+		var opt = parseFloat($("#interactive-opt").val());
+		var max = parseFloat($("#interactive-max").val());
+		var min = opt - (max - opt);
+		
+		var data = new google.visualization.DataTable();
+		data.addColumn("number", "Temperature");
+		data.addColumn("number", "Birth rate");
+		for (var i = min; i <= max; i+= 0.1) {
+			var res = 1 - (Math.pow(i - opt, 2)/Math.pow(opt - max, 2));
+			data.addRow([i, res]);
+		}
+		if (!DaisyManager.interactiveChart) {
+			DaisyManager.interactiveChart = new google.visualization.LineChart(document.getElementById('interactive-graph'));
+		}
+		DaisyManager.interactiveChart.draw(data, DaisyManager.interactiveChartOptions);
 	}
 
 }

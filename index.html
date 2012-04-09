@@ -206,7 +206,8 @@
 					<div class="previoussection">Previous section: <a href="#purpose" class="animate">DaisyWorld's Purpose</a>.</div>
 					<div class="row">
 						<div class="span12">
-							<p>The DaisyWorld simulation is run as a series of discrete computations with varying luminosity values for the output of the sun. The simluation parameters for start luminosity, final luminosity, and the step change in luminosity between each sample determines the length of the simulation. Each of the subsequent actions are performed at <em>each step</em> of the simulation.<p>
+							<p>The DaisyWorld simulation is run as a series of discrete computations with varying luminosity values for the output of the sun. The simluation parameters for start luminosity, final luminosity, and the step change in luminosity between each sample determines the length of the simulation.</p>
+							<p>Each of the subsequent actions are performed at <em>each step</em> of the simulation, and are repeated in that simulation step until the area changes for the daisies has <em>converged</em>. This has the effect of predicting a very long solar period, where the solar output is changing over years rather than the rate of days in which daisies grow and die out.</p>
 							<h3>Planetary albedo</h3>
 							<p>The first step is to determine the planetary albedo, \(A_p\). This is simply a sum of the albedos of the \(N\) daisies (\(A_d\)) weighted by their current surface area (\(S_d\)) and the area of the soil (\(S_s\)) multiplied by its albedo (\(A_s\)).</p>
 							<p>$$ A_p = A_s S_s + \sum_{i=1}^N A_d S_d $$</p>
@@ -232,8 +233,41 @@
 					<div class="row">
 						<div class="span12">
 							<h3>Local temperature</h3>
-							<p>The local temperature of the regions of daisies and the soil is determined by a similar use of Stefan's law. However in this case the emissivity is determined by the regions' albedo \(A_l\) <em>compared to the planetary albedo</em> \(A_p\), and the input energy is based on the energy from the sun as well as the energy transferred locally from nearby regions, which is expressed as an energy transfer factor \(\tau\). Thus the equation for the local temperature (of a daisy population or soil area) \(T_l\) is:</p>
+							<p>The local temperature of the regions of daisies and the soil is determined by a similar use of Stefan's law. However in this case the emissivity is determined by the regions' albedo \(A_l\) <em>compared to the planetary albedo</em> \(A_p\), and the input energy is based on the energy from the sun as well as the energy transferred locally from nearby regions, which is expressed as an energy transfer factor \(\tau\) = 0.12. Thus the equation for the local temperature (of a daisy population or soil area) \(T_l\) is:</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="span7">
 							<p>$$ T_l = \sqrt[4]{{{\tau\lambda\xi(A_p-A_l)}\over{\sigma}}+T_p^{4}} $$</p>
+							<h3>Birth rate</h3>
+							<p>From the local temperatures of the areas, we can work out the birth rate of each of the daisy species.</p>
+							<p>For each of the daisy colours, the birth rate of that colour \(B_d\) is determined by an inverted parabolic function of growth rate which peaks at the daisy's optimum growth temperature \(T_{opt}\) and reaches zero at its maximum survivable temperature \(T_{max}\), and the daisy's current temperature \(T_l\):</p>
+							<p>$$ B_d = 1 - {{(T_l-T_{opt})^2}\over{(T_{opt}-T_{max})^2}} $$</p>
+							<p>Try out the interactive feature to the right to create birth rate parabolas for various optimal and maximum temperature tolerances.</p>
+							<h3>Area change</h3>
+							<p>Once the birth rate of each of the daisy colours has been established, it is possible to compute the area change for the individual colour areas.</p>
+						</div>
+						<div class="span4 well">
+							<p><strong>Interactive:</strong> Use the following controls to see the birth rate graph for varying optimal and maximum temperature parameters for daisies. All units in degrees celcius.</p>
+							<form class="form-inline">
+								<label for="interactive-opt"><em>Optimal:</em></label>
+								<input type="text" class="input-mini" value="22.5" id="interactive-opt" />
+								<label for="interactive-max"><em>Max:</em></label>
+								<input type="text" class="input-mini" value="40" id="interactive-max" />
+								<button class="btn btn-primary" id="interactive-go">Show</button>
+								<button class="btn btn-danger btn-mini" id="interactive-reset">Reset</button>
+							</form>
+							<div id="interactive-graph"></div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="span12">
+							<p>However the first piece of information required is how much barren area is left on the planet's surface, or the soil area \(S_s\). This is simply the planetary surface not taken up with current daisy populations:</p>
+							<p>$$ S_s = 1 - \sum_{i=1}^N A_d $$</p>
+							<p>Now the area change can be computed. It is based on the current surface area occupied by that daisy colour \(A_d\), the birth rate computed in the previous sub-section (\(B_d\)), the soil surface area (which is the area that the daisy can expand into) \(S_s\), and the globally configured death rate at each stage \(D\) = 0.3:
+							<p>$$ \Delta A_d = A_d((B_d S_s) - D) $$</p>
+							<p>Thus the area may simply be updated to the new value \(A_d^*\) by the formula:</p>
+							<p>$$ A_d^* = A_d + \Delta A_d $$</p>
 						</div>
 					</div>
 					<div class="nextsection">Next section: <a href="#creators" class="animate">The Creators of DaisyWorld</a>.</div>
