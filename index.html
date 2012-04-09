@@ -281,9 +281,19 @@
 					<h1>Critiques of DaisyWorld</h1>
 					<div class="previoussection">Previous section: <a href="#maths" class="animate">DaisyWorld Maths</a>.</div>
 					<div class="row">
-						<div class="span12">
+						<div class="span6">
 							<p>Both DaisyWorld and the Gaia theory have come under criticism in the past.</p>
 							<p>DaisyWorld has been seriously criticised for omitting key components of the Earth system as it is understood, such as a difference between species- and individual-level phenomena. These concerns were addressed in a 2011 paper by Lovelock and Lenton.</p>
+						</div>
+						<div class="span6">
+							<div class="planet inline center p150"></div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="span6">
+							<img src="img/earth.png" alt="Earth" class="sectionimg" />
+						</div>
+						<div class="span6">
 							<p>It has also been criticised for requiring the planet and its inhabitants to somehow agree on the best desired outcome, and for its inconsistency with natural selection (natural selection of planets would require evidence of planets which had not successfully been regulated by a Gaia process).</p>
 							<p>Gaia theory has been criticised by unnecessarily portraying the Earth as a living organism, which scientists claim has given laymen the wrong impression of how the Earth's systems work. The Gaia hypothesis, before it was recognised as a theory, was also been called "unscientific" for having an apparent connection to the real scenario without offering any mechanism which explains how it actually works.</p>
 						</div>
@@ -299,7 +309,7 @@
 					<p class="leftmargin" style="clear: both;">Here you can create your own DaisyWorld.</p>
 					<p class="leftmargin">Start off by running the standard simulation with the blue button below. Then, you can create your own parameters for DaisyWorld.</p>
 					<div class="row highlight" id="simzone">
-						<div class="span4" style="text-align: center;">
+						<div class="span4 hidden" style="text-align: center;">
 							<button id="defaultrun" class="btn btn-primary btn-large" title="Click here to start with the default simulation" style="margin: 100px auto 0;">Run simulation</button>
 						</div>
 						<div class="span4 hidden hiddenfirstrow btntoggle">
@@ -353,16 +363,16 @@
 								</fieldset>
 							</form>
 						</div>
-						<div class="span4 hidden hiddenfirstrow btntoggle">
+						<div class="span4 hiddenfirstrow btntoggle">
 							<h2>Daisy Properties</h2>
 							<button class="btn btn-primary btn-small togglebtn" style="float: right; margin-top: 5px;">World Parameters</button>
 							<form class="form-horizontal" id="daisyform">
 								<fieldset>
 									<legend>Select daisies to modify</legend>
 									<select id="daisyselect">
-										<option value="White">White daisies</option>
-										<option value="Black">Black daisies</option>
 									</select>
+									<button class="btn btn-success" id="adddaisy" data-toggle="modal" href="#daisy-create">New</button>
+									<button class="btn btn-danger" id="deldaisy">Delete</button>
 								</fieldset>
 								<fieldset>
 									<legend id="daisyname">White daisies</legend>
@@ -453,6 +463,36 @@
 			
 		</div> <!-- /container -->
 
+		<!-- modals -->
+		<div class="modal hide fade in" id="daisy-create">
+			<div class="modal-header">
+				<a class="close" data-dismiss="modal">&times;</a>
+				<h3>Create new Daisy</h3>
+			</div>
+			<div class="modal-body">
+				<label for="daisy-new-name">Enter the name for your daisies:</label>
+				<input type="text" id="daisy-new-name" />
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="btn" data-dismiss="modal">Cancel</a>
+				<a href="#" class="btn btn-primary" id="daisy-create-modal">Create</a>
+			</div>
+		</div>
+		
+		<div class="modal hide fade in" id="daisy-delete">
+			<div class="modal-header">
+				<a class="close" data-dismiss="modal">&times;</a>
+				<h3>Are you sure?</h3>
+			</div>
+			<div class="modal-body">
+				<p>Are you sure you want to delete the daisy: <strong id="daisy-to-delete"></strong></p>
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="btn" data-dismiss="modal">No</a>
+				<a href="#" class="btn btn-danger" id="daisy-delete-modal">Yes</a>
+			</div>
+		</div>
+		
 		<script>
 			google.load("jquery", "1.7.1");
 		</script>

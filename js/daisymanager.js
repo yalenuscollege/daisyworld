@@ -77,6 +77,7 @@ var DaisyManager = {
 			DaisyManager.saveDaisyData();
 			DaisyManager.populateDaisyData(newtype);
 		});
+		DaisyManager.populateDaisyDropdown();
 		$("#resetbtn2").on("click", function(e) {
 			e.preventDefault();
 			DaisyWorld.daisies = [
@@ -96,6 +97,54 @@ var DaisyManager = {
 				}
 			];
 			DaisyManager.populateDaisyData("White");
+			return false;
+		});
+		$("#daisy-create").modal({ "show": false });
+		$("#daisy-delete").modal({ "show": false });
+		$("#daisy-create-modal").on("click", function(e) {
+			e.preventDefault();
+			var val = $("#daisy-new-name").val();
+			$("#daisy-new-name").val("");
+			if (val.length > 0) {
+				$("#daisy-create").modal("hide");
+				var corrected = val.replace(" ", "");
+				corrected = corrected.charAt(0).toUpperCase() + corrected.slice(1);
+				DaisyWorld.daisies.push({
+					"Label": corrected,
+					"Albedo": 0.75,
+					"IdealTemperature": 22.5,
+					"MaxTemperature": 40,
+					"Enabled": true
+				});
+				DaisyManager.saveDaisyData();
+				DaisyManager.populateDaisyDropdown();
+				DaisyManager.populateDaisyData(corrected);
+			}
+			return false;
+		});
+		$("#deldaisy").on("click", function(e) {
+			e.preventDefault();
+			$("#daisy-to-delete").empty().append($("#daisyselect").val());
+			$("#daisy-delete").modal("show");
+			return false;
+		});
+		$("#daisy-delete-modal").on("click", function(e) {
+			e.preventDefault();
+			$("#daisy-delete").modal("hide");
+			var target = $("#daisyselect").val();
+			var targetint = false;
+			for (var i = 0; i < DaisyWorld.daisies.length; i++) {
+				if (DaisyWorld.daisies[i].Label == target) {
+					targetint = i;
+					break;
+				}
+			}
+			if (targetint !== false) {
+				DaisyWorld.daisies.splice(targetint, 1);
+			}
+			DaisyManager.saveDaisyData();
+			DaisyManager.populateDaisyDropdown();
+			DaisyManager.populateDaisyData(DaisyWorld.daisies[0].Label);
 			return false;
 		});
 	},
@@ -122,6 +171,15 @@ var DaisyManager = {
 		$("#albedo").val(data.Albedo);
 		$("#ideal").val(data.IdealTemperature);
 		$("#max").val(data.MaxTemperature);
+	},
+	
+	// Populates the dropdown
+	populateDaisyDropdown: function() {
+		$("#daisyselect").empty();
+		for (var i = 0; i < DaisyWorld.daisies.length; i++) {
+			var label = DaisyWorld.daisies[i]["Label"];
+			$("#daisyselect").append("<option value=\"" + label + "\">" + label + " daisies</option>");
+		}
 	},
 	
 	// Saves daisy data from the form
@@ -262,7 +320,7 @@ var DaisyManager = {
 			"width": "100%",
 			"height": 200,
 			"backgroundColor": "#eee",
-			"colors": ["white","black"],
+			"colors": ["white","black", "red", "green", "purple", "orange", "blue", "yellow", "pink", "grey"],
 			"hAxis": {
 				"title": "Time"
 			},
