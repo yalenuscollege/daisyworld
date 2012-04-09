@@ -240,6 +240,11 @@ div.section-inner .leftmargin {
 	margin-bottom: 5px;
 }
 
+/* Maths */
+span.math {
+	font-size: 120%;
+}
+
 /* Background planets */
 div.planet {
 	background-color: #999;

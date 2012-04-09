@@ -40,7 +40,9 @@ var DaisyManager = {
 		//this.initialise();
 		$("#resetbtn").on("click", DaisyManager.reset);
 		$("#runbtn, #defaultrun").on("click", DaisyManager.go);
-		$("#defaultrun").tooltip("show");
+		window.setTimeout(function() {
+			$("#defaultrun").tooltip("show");
+		}, 5000);
 		$(".togglebtn").on("click", function(e) {
 			e.preventDefault();
 			$(".btntoggle").toggleClass("hidden");

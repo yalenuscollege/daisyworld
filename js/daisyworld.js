@@ -38,11 +38,10 @@ var DaisyWorld = {
 	pTemperature: 0,
 	
 	// Solar flux density constant
-	//solarFluxDensityConstant: 3399,
-	solarFluxDensityConstant: 91763426350,
+	solarFluxDensityConstant: 1000,
 	
 	// Stefan-Boltzmann constant
-	sbConstant: 5.67032,
+	sbConstant: 0.0000000567032,
 	
 	// Insulation constant for the planet - how easy it is to transfer heat between areas
 	temperatureInsulation: 0.12,

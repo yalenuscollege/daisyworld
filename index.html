@@ -87,7 +87,7 @@
 						</div>
 						<div class="span8">
 							<h2>Discover DaisyWorld</h2>
-							<p>The aim of this site is to provide a singular source of information about DaisyWorld, a notional planet conceived to demonstrate the gaia hypothesis and to attempt to show how planets and life may work together for joint advantage.</p>
+							<p>The aim of this site is to provide a singular source of information about DaisyWorld, a notional planet conceived to demonstrate the Gaia hypothesis and to attempt to show how planets and life may work together for joint advantage.</p>
 							<p>The various sections of this website give detailed information about DaisyWorld and what the model has achieved since its conception. There is also an opportunity to construct your own DaisyWorld simulation with a novel JavaScript implementation of the original DaisyWorld equations.</p>
 						</div>
 					</div>
@@ -186,7 +186,16 @@
 							<img src="img/earth.png" alt="Earth" class="sectionimg" />
 						</div>
 					</div>
-					<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+					<div class="row">
+						<div class="span4">
+						</div>
+						<div class="span8">	
+							<p>The main purpose of DaisyWorld's development was to show that the previously outlined Gaia hypothesis is plausible.</p>
+							<p>While the simple one-species two-colour model is an over-simplification of the hugely complex Earth systems, it does demonstrate that feedback mechanisms can evolve between groups of species interested only in themselves, rather than through other processes such as natural selection.</p>
+							<p>DaisyWorld does not, and never sought to, prove any of the theories laid out in Gaia; however, when it was published, it did go some way towards convincing scientists that the Gaia hypothesis may at least be plausible. Thus, further research was carried out on Earth, which lead to disoveries that prove some components of Gaia theory to be true for the Earth.</p>
+							<p>For example, it is now generally accepted that the Earth's tropical forests play an important part in global climate regulation, and it has been confirmed that the oxygen content of the air has not varied from 21% +/- 5% for 1 million years. Both of these are strong indicators that the Gaia theory may be correct, but are not enough to prove it on their own.</p>
+						</div>
+					</div>
 					<div class="nextsection">Next section: <a href="#maths" class="animate">DaisyWorld Maths</a>.</div>
 				</div>
 			</div>
@@ -195,7 +204,38 @@
 				<div class="section-inner">
 					<h1>DaisyWorld Maths</h1>
 					<div class="previoussection">Previous section: <a href="#purpose" class="animate">DaisyWorld's Purpose</a>.</div>
-					<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+					<div class="row">
+						<div class="span12">
+							<p>The DaisyWorld simulation is run as a series of discrete computations with varying luminosity values for the output of the sun. The simluation parameters for start luminosity, final luminosity, and the step change in luminosity between each sample determines the length of the simulation. Each of the subsequent actions are performed at <em>each step</em> of the simulation.<p>
+							<h3>Planetary albedo</h3>
+							<p>The first step is to determine the planetary albedo, \(A_p\). This is simply a sum of the albedos of the \(N\) daisies (\(A_d\)) weighted by their current surface area (\(S_d\)) and the area of the soil (\(S_s\)) multiplied by its albedo (\(A_s\)).</p>
+							<p>$$ A_p = A_s S_s + \sum_{i=1}^N A_d S_d $$</p>
+							<p>The albedo for the whole planet is thus computed as the average of the albedos of the components that are covering the surface of the planet, weighted by the proportion of the planet that they occupy. Note that the sum of the areas of the daisies and the soil is always 1:</p>
+							<p>$$ A_s + \sum_{i=1}^N A_d = 1 $$</p>
+							<h3>Planetary temperature</h3>
+							<p>The temperature of the planet is governed by Stefan's law, or the Stefan-Boltzmann law. This law states that the total energy radiated by an object per unit time (\(E\)) is directly proportional to the <em>fourth power</em> of the object's absolute temperature \(T\):</p>
+							<p>$$ E \propto T^4 $$</p>
+							<p>The constant of proportionality in this case is Stefan's constant (or the Stefan-Boltzmann constant), \(\sigma\). The constant value is derived from Planck's constant \(h\), the Boltzmann constant \(k\), and the speed of light \(c\):</p>
+							<p>$$ \sigma = {2\pi^{5}k^{4} \over 15c^{2}h^{3}} = 5.67040\times10^{-8}Js^{-1}m^{-2}K^{-4} $$</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="span8">
+							<p>When the object is not totally black, its emission is modulated by an <em>emissivity</em>. In the case of DaisyWorld surfaces (daisies and the soil), this emissivity is governed by its albedo.</p>
+							<p>Additionally, the energy reflection depends on the incident energy from the sun. For easier computations, we split this into a constant solar input, the solar flux density constant \(\xi\) and the solar luminosity \(\lambda\). It is the solar luminosity that is varied over the course of the simulation at each sample time. Thus our final equation for the temperature of the planet \(T_p\) will be:</p>
+							<p>$$ T_p = \sqrt[4]{{\lambda\xi(1-A_p)}\over{\sigma}} $$</p>
+						</div>
+						<div class="span3 well">
+							<p><strong>Note:</strong> The solar flux density constant \(\xi\) is a measure of the energy flux density of the surface of the planet when the luminosity of the sun \(\lambda = 1\). In this simulation it is arbitrarily chosen as \(1000Wm^{-2}\)</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="span12">
+							<h3>Local temperature</h3>
+							<p>The local temperature of the regions of daisies and the soil is determined by a similar use of Stefan's law. However in this case the emissivity is determined by the regions' albedo \(A_l\) <em>compared to the planetary albedo</em> \(A_p\), and the input energy is based on the energy from the sun as well as the energy transferred locally from nearby regions, which is expressed as an energy transfer factor \(\tau\). Thus the equation for the local temperature (of a daisy population or soil area) \(T_l\) is:</p>
+							<p>$$ T_l = \sqrt[4]{{{\tau\lambda\xi(A_p-A_l)}\over{\sigma}}+T_p^{4}} $$</p>
+						</div>
+					</div>
 					<div class="nextsection">Next section: <a href="#creators" class="animate">The Creators of DaisyWorld</a>.</div>
 				</div>
 			</div>
@@ -358,6 +398,7 @@
 							<li><a href="https://code.google.com/apis/chart/">Google Chart API</a> - for the pretty charts</li>
 							<li><a href="http://markdalgleish.com/projects/stellar.js/demos/">Stellar JS</a> - for the background planets</li>
 							<li><a href="http://flesler.blogspot.co.uk/2007/10/jqueryscrollto.html">ScrollTo</a> - for the nice scrolling effects on link clicks</li>
+							<li><a href="http://www.mathjax.org">MathJax</a> - equation rendering</li>
 						</ul>
 					</div>
 				</div>
@@ -382,6 +423,9 @@
 		<script src="js/script.js"></script>
 		<script src="js/daisyworld.js"></script>
 		<script src="js/daisymanager.js"></script>
+		
+		<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+		
 		<script>
 			var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
 			(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
