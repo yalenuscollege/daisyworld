@@ -10,7 +10,7 @@
 
 		<title>DaisyWorld</title>
 		<meta name="description" content="DaisyWorld simulation and information">
-		<meta name="author" content="Chris Alexander, siu07cja@reading.ac.uk">
+		<meta name="author" content="Chris Alexander, siu07cja@gmail.com">
 
 		<meta name="viewport" content="width=device-width">
 
@@ -40,16 +40,15 @@
 					<div class="nav-collapse">
 						<ul class="nav">
 							<li class="active"><a href="#home" class="animate">Home</a></li>
-							<li><a href="#guide" class="animate">Site Guide</a></li>
 							<li><a href="#about" class="animate">About</a></li>
 							<li><a href="#purpose" class="animate">Purpose</a></li>
 							<li><a href="#maths" class="animate">Maths</a></li>
 							<li><a href="#critique" class="animate">Critiques</a></li>
 							<li><a href="#build" class="animate">Build</a></li>
 							<li><a href="#references" class="animate">References</a></li>
+							<li><a href="#guide" class="animate">Site Guide</a></li>
 						</ul>
 					</div>
-					<div class="creator">Chris Alexander, siu07cja@reading.ac.uk</div>
 				</div>
 			</div>
 		</div>
@@ -73,67 +72,14 @@
 						<h2>Welcome to</h2>
 						<h1>DaisyWorld</h1>
 					</span>
-					<p class="message">Scroll down or <a href="#guide" class="animate">click here</a> to get started &darr;</p>
-				</div>
-			</div>
-			
-			<div class="section" id="guide">
-				<div class="section-inner">
-					<h1>Site Guide</h1>
-					<div class="previoussection">Previous section: <a href="#home" class="animate">Home</a>.</div>
-					<div class="row">
-						<div class="span4">
-							<div class="planet inline center p150"></div>
-						</div>
-						<div class="span8">
-							<h2>Discover DaisyWorld</h2>
-							<p>The aim of this site is to provide a singular source of information about DaisyWorld, a notional planet conceived to demonstrate the Gaia hypothesis and to attempt to show how planets and life may work together for joint advantage.</p>
-							<p>The various sections of this website give detailed information about DaisyWorld and what the model has achieved since its conception. There is also an opportunity to construct your own DaisyWorld simulation with a novel JavaScript implementation of the original DaisyWorld equations.</p>
-							<p>Please note references are contained in the <a href="#references" class="animate">References</a> section at the end of the page.</p>
-						</div>
-					</div>
-					<div class="row">
-						<div class="span8">
-							<h2>Getting Around</h2>
-							<p>The site is split up into smaller sections for you to navigate more easily.</p>
-							<p>You can use the navigation bar at the top to skip from section to section across the site.</p>
-							<p>You can also use the next and previous section links at the top and bottom of each section to jump to the nearby sections.</p>
-							<p>Alternatively, use your mouse's scroll wheel or arrow keys to go down the page - one section follows another.</p>
-						</div>
-						<div class="span4">
-							<img src="img/navigation.png" alt="Navigation" class="sectionimg" style="width: auto;" />
-						</div>
-					</div>
-					<div class="row">
-						<div class="span4">
-							<img src="img/chrome.png" alt="Google Chrome logo" class="sectionimg" />
-						</div>
-						<div class="span8">
-							<h2>Recommended capabilities</h2>
-							<p>This site uses the latest standards in web technology. JavaScript should be enabled in whichever browser you use for the DaisyWorld simulation to work.</p>
-							<p>It is advised that either the latest version of Google Chrome or Mozilla Firefox is used to browse this site. They are available from the following websites: <a href="http://google.com/chrome" target="_blank">Google Chrome</a>. <a href="http://firefox.com" target="_blank">Mozilla Firefox</a>. They are also available on all of the SSE lab PCs.</p>
-							<p>The minimum recommended screen resolution is 1024x768 pixels. All SSE lab PCs exceed this resolution. The optimal viewing resolution is 1680x1050 pixels.</p>
-						</div>
-					</div>
-					<div class="row">
-						<div class="span8">
-							<h2>100% open source</h2>
-							<p>This site is completely open source.</p>
-							<p>View the code behind the website, how it was developed, and access the DaisyWorld javascript library by visiting the project's <a href="https://github.com/chrisalexander/DaisyWorldWeb" target="_blank">GitHub page</a>.</p>
-							<p>Please note this site remains under copyright.</p>
-						</div>
-						<div class="span4">
-							<img src="img/octocat.png" alt="Octocat" class="sectionimg" />
-						</div>
-					</div>
-					<div class="nextsection">Next section: <a href="#about" class="animate">About DaisyWorld</a>.</div>
+					<p class="message">Scroll down or <a href="#about" class="animate">click here</a> to get started &darr;</p>
 				</div>
 			</div>
 			
 			<div class="section" id="about">
 				<div class="section-inner">
 					<h1>About DaisyWorld</h1>
-					<div class="previoussection">Previous section: <a href="#guide" class="animate">Site Guide</a>.</div>
+					<div class="previoussection">Previous section: <a href="#home" class="animate">Home</a>.</div>
 					<div class="row">
 						<div class="span8">
 							<p>The first paper on DaisyWorld was published in 1983, authored by James Lovelock and Andrew Watson. DaisyWorld itself is a simple mathematical model, which aims to illustrate that the Gaia hypothesis is valid for systems such as the Earth. It does this by modelling some of the core components of the Earth's solar system and a simple biosphere.</p>
@@ -420,14 +366,6 @@
 							<button id="stoprender" class="btn btn-danger hidden" style="margin-top: 10px; float: right;">Stop</button>
 						</div>
 					</div>
-					<div class="row">
-						<div class="span12">
-							<p>The mathematics for this simulation was based on that from Lovelock and Watson's original DaisyWorld paper. This is a completely novel implementation based solely on this mathematics. Their model is sufficiently generic such that more than two daisy species can be easily implemented, which is what has been done here.</p>
-							<p>There was a project to implement DaisyWorld in JavaScript <a href="https://github.com/doup/daisyworld.js" target="_blank">last modified over a year ago</a> which is incomplete and does not appear to work. The most complete DaisyWorld browser implementation <a href="http://gingerbooth.com/flash/daisyball/DaisyBall.html" target="_blank">is in Flash</a> by Ginger Booth and is closed-source, so of little community benefit. However the mathematical descriptions provided by this project did clarify some minor details which were omitted in the original paper.</p>
-							<p>This implementation is both open source and comes with a user experience designed to maximise user engagement and learning, unlike other web-based implementations.</p>
-							<p>Note that the DaisyWorld library itself is in the <a href="/js/daisyworld.js" target="_blank">js/daisyworld.js</a> file. The UI implementation and rendering is in the <a href="/js/daisymanager.js" target="_blank">js/daisymanager.js</a> file. Both of these files are completely novel to this site.</p>
-						</div>
-					</div>
 					<div class="nextsection">Next section: <a href="#references" class="animate">References</a>.</div>
 				</div>
 			</div>
@@ -455,6 +393,58 @@
 							<li><a href="http://flesler.blogspot.co.uk/2007/10/jqueryscrollto.html" target="_blank">ScrollTo</a> - for the nice scrolling effects on link clicks</li>
 							<li><a href="http://www.mathjax.org" target="_blank">MathJax</a> - equation rendering</li>
 						</ul>
+					</div>
+				</div>
+			</div>
+			
+			<div class="section" id="guide">
+				<div class="section-inner">
+					<h1>Site Guide</h1>
+					
+					<div class="row">
+						<div class="span4">
+							<div class="planet inline center p150"></div>
+						</div>
+						<div class="span8">
+							<h2>Discover DaisyWorld</h2>
+							<p>The aim of this site is to provide a singular source of information about DaisyWorld, a notional planet conceived to demonstrate the Gaia hypothesis and to attempt to show how planets and life may work together for joint advantage.</p>
+							<p>The various sections of this website give detailed information about DaisyWorld and what the model has achieved since its conception. There is also an opportunity to construct your own DaisyWorld simulation with a novel JavaScript implementation of the original DaisyWorld equations.</p>
+							<p>Please note references are contained in the <a href="#references" class="animate">References</a> section at the end of the page.</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="span8">
+							<h2>Getting Around</h2>
+							<p>The site is split up into smaller sections for you to navigate more easily.</p>
+							<p>You can use the navigation bar at the top to skip from section to section across the site.</p>
+							<p>You can also use the next and previous section links at the top and bottom of each section to jump to the nearby sections.</p>
+							<p>Alternatively, use your mouse's scroll wheel or arrow keys to go down the page - one section follows another.</p>
+						</div>
+						<div class="span4">
+							<img src="img/navigation.png" alt="Navigation" class="sectionimg" style="width: auto;" />
+						</div>
+					</div>
+					<div class="row">
+						<div class="span4">
+							<img src="img/chrome.png" alt="Google Chrome logo" class="sectionimg" />
+						</div>
+						<div class="span8">
+							<h2>Recommended capabilities</h2>
+							<p>This site uses the latest standards in web technology. JavaScript should be enabled in whichever browser you use for the DaisyWorld simulation to work.</p>
+							<p>It is advised that either the latest version of Google Chrome or Mozilla Firefox is used to browse this site. They are available from the following websites: <a href="http://google.com/chrome" target="_blank">Google Chrome</a>. <a href="http://firefox.com" target="_blank">Mozilla Firefox</a>. They are also available on all of the SSE lab PCs.</p>
+							<p>The minimum recommended screen resolution is 1024x768 pixels. All SSE lab PCs exceed this resolution. The optimal viewing resolution is 1680x1050 pixels.</p>
+						</div>
+					</div>
+					<div class="row">
+						<div class="span8">
+							<h2>100% open source</h2>
+							<p>This site is completely open source.</p>
+							<p>View the code behind the website, how it was developed, and access the DaisyWorld javascript library by visiting the project's <a href="https://github.com/chrisalexander/DaisyWorldWeb" target="_blank">GitHub page</a>.</p>
+							<p>Please note this site remains under copyright.</p>
+						</div>
+						<div class="span4">
+							<img src="img/octocat.png" alt="Octocat" class="sectionimg" />
+						</div>
 					</div>
 				</div>
 			</div>

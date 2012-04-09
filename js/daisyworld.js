@@ -2,7 +2,7 @@
 * JS impl of daisyworld simulation
 *
 * (C) 2012 Chris Alexander
-* siu07cja@reading.ac.uk / siu07cja@gmail.com
+* siu07cja@gmail.com
 */
 var DaisyWorld = {
 
