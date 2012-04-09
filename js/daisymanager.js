@@ -1,3 +1,9 @@
+/*
+* JS rendering of daisyworld simulation
+*
+* (C) 2012 Chris Alexander
+* siu07cja@reading.ac.uk / siu07cja@gmail.com
+*/
 var DaisyManager = {
 
 	// The raw data from the model

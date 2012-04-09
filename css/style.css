@@ -28,6 +28,12 @@ footer p {
 	}
 }
 
+.creator {
+	float: right;
+	color: #ddd;
+	margin-top: 10px;
+}
+
 /* Container */
 div.container {
 	height: 100%;

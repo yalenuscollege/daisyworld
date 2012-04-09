@@ -44,12 +44,12 @@
 							<li><a href="#about" class="animate">About</a></li>
 							<li><a href="#purpose" class="animate">Purpose</a></li>
 							<li><a href="#maths" class="animate">Maths</a></li>
-							<li><a href="#creators" class="animate">Creators</a></li>
 							<li><a href="#critique" class="animate">Critiques</a></li>
 							<li><a href="#build" class="animate">Build</a></li>
 							<li><a href="#references" class="animate">References</a></li>
 						</ul>
 					</div>
+					<div class="creator">Chris Alexander, siu07cja@reading.ac.uk</div>
 				</div>
 			</div>
 		</div>
@@ -89,6 +89,7 @@
 							<h2>Discover DaisyWorld</h2>
 							<p>The aim of this site is to provide a singular source of information about DaisyWorld, a notional planet conceived to demonstrate the Gaia hypothesis and to attempt to show how planets and life may work together for joint advantage.</p>
 							<p>The various sections of this website give detailed information about DaisyWorld and what the model has achieved since its conception. There is also an opportunity to construct your own DaisyWorld simulation with a novel JavaScript implementation of the original DaisyWorld equations.</p>
+							<p>Please note references are contained in the <a href="#references" class="animate">References</a> section at the end of the page.</p>
 						</div>
 					</div>
 					<div class="row">
@@ -135,9 +136,8 @@
 					<div class="previoussection">Previous section: <a href="#guide" class="animate">Site Guide</a>.</div>
 					<div class="row">
 						<div class="span8">
-							<p>The first paper on DaisyWorld was published in 1983. DaisyWorld itself is a simple mathematical model, which aims to illustrate that the Gaia hypothesis is valid for systems such as the Earth.</p>
-							<p>The original DaisyWorld was a theoretical, barren planet orbiting a foreign star, whose grey soil was sown with the seeds for black and white daisies.</p>
-							<p>The daisies have temperature windows and optimal temperatures at which they can grow. They only need the correct temperature to grow - the original model is simplistic in that it does not include other features such as animals, multiple species, water and so on.</p>
+							<p>The first paper on DaisyWorld was published in 1983, authored by James Lovelock and Andrew Watson. DaisyWorld itself is a simple mathematical model, which aims to illustrate that the Gaia hypothesis is valid for systems such as the Earth. It does this by modelling some of the core components of the Earth's solar system and a simple biosphere.</p>
+							<p>The original DaisyWorld was a theoretical, barren planet orbiting a foreign star, whose grey soil was sown with the seeds of black and white daisies.</p>							<p>The daisies have temperature windows and optimal temperatures at which they can grow. They only need the correct temperature to grow - the original model is simplistic in that it does not include other features such as animals, multiple species, water and so on.</p>
 							<p>Being different colours, the two types of daisies and the soil of the planet absorb and reflect light differently - this is known as their <em>albedo</em>.</p>
 						</div>
 						<div class="span4">
@@ -160,8 +160,9 @@
 					<div class="row">
 						<div class="span6">
 							<p>During the course of the DaisyWorld simulation, the population of black and white daisies on the planet's surface is tracked. The surface temperature of the planet is also recorded.</p>
-							<p>DaisyWorld's sun is constantly getting warmer, much like the Earth's sun. Despite this, the surface temperature of DaisyWorld maintains almost constant for a long period of time, owing to the different populations of white and black daisies that grow.</p>
+							<p>DaisyWorld's sun is constantly getting warmer, much like the Earth's sun. Despite this, the surface temperature of DaisyWorld is maintained almost constant for a long period of time, owing to the different populations of white and black daisies that grow.</p>
 							<p>This <em>feedback loop</em> regulates the temperature of the surface, despite a constantly warming solar environment. It illustrates that an entire planetary population can work together for mutual benefit, which is a core component of Gaia theory, discussed in the next section.</p>
+							<p>Since its original design, DaisyWorld has been modified numerous times to include more detail and better simulations. The model works with 10 or more differently coloured daisy species, rabbits and foxes, and its performance and temperature regulation capability improves with more species included - even remaining stable when perturbed.</p>
 						</div>
 						<div class="span6">
 							<img src="img/graphs.png" alt="Graphs of daisyworld temperature and daisy populations" class="sectionimg" style="width: 300px; height: 300px;" />
@@ -178,7 +179,7 @@
 					<div class="row">
 						<div class="span8">
 							<h3>The Gaia Hypothesis</h3>
-							<p>The Gaia hypothesis, or Gaia theory, was established by the same scientist behind DaisyWorld.</p>
+							<p>The Gaia hypothesis, or Gaia theory, was established by James Lovelock, who subsequently developed DaisyWorld as a proof-of-concept mathematical experiment.</p>
 							<p>While there are different descriptions and variations of the theory, some of which are studied today and some of which are not, the original idea was that the Earth itself is self-regulating as a system involving every part of the planet.</p>
 							<p>The idea that the atmosphere, biosphere (the biological ecosystems of the planet), hydrospheres (the water systems of the Earth) and the pedosphere (the soil surface) - together called Gaia - work together to sustain life was initially generated in the 1970's.</p>
 						</div>
@@ -188,6 +189,7 @@
 					</div>
 					<div class="row">
 						<div class="span4">
+							<div class="planet inline center p150"></div>
 						</div>
 						<div class="span8">	
 							<p>The main purpose of DaisyWorld's development was to show that the previously outlined Gaia hypothesis is plausible.</p>
@@ -206,7 +208,7 @@
 					<div class="previoussection">Previous section: <a href="#purpose" class="animate">DaisyWorld's Purpose</a>.</div>
 					<div class="row">
 						<div class="span12">
-							<p>The DaisyWorld simulation is run as a series of discrete computations with varying luminosity values for the output of the sun. The simluation parameters for start luminosity, final luminosity, and the step change in luminosity between each sample determines the length of the simulation.</p>
+							<p>The DaisyWorld simulation is run as a series of discrete computations with varying luminosity values for the output of the sun. The simulation parameters for start luminosity, final luminosity, and the step change in luminosity between each sample determines the length of the simulation.</p>
 							<p>Each of the subsequent actions are performed at <em>each step</em> of the simulation, and are repeated in that simulation step until the area changes for the daisies has <em>converged</em>. This has the effect of predicting a very long solar period, where the solar output is changing over years rather than the rate of days in which daisies grow and die out.</p>
 							<h3>Planetary albedo</h3>
 							<p>The first step is to determine the planetary albedo, \(A_p\). This is simply a sum of the albedos of the \(N\) daisies (\(A_d\)) weighted by their current surface area (\(S_d\)) and the area of the soil (\(S_s\)) multiplied by its albedo (\(A_s\)).</p>
@@ -248,7 +250,7 @@
 							<p>Once the birth rate of each of the daisy colours has been established, it is possible to compute the area change for the individual colour areas.</p>
 						</div>
 						<div class="span4 well">
-							<p><strong>Interactive:</strong> Use the following controls to see the birth rate graph for varying optimal and maximum temperature parameters for daisies. All units in degrees celcius.</p>
+							<p><strong>Interactive:</strong> Use the following controls to see the birth rate graph for varying optimal and maximum temperature parameters for daisies. All temperatures in degrees celcius.</p>
 							<form class="form-inline">
 								<label for="interactive-opt"><em>Optimal:</em></label>
 								<input type="text" class="input-mini" value="22.5" id="interactive-opt" />
@@ -270,15 +272,6 @@
 							<p>$$ A_d^* = A_d + \Delta A_d $$</p>
 						</div>
 					</div>
-					<div class="nextsection">Next section: <a href="#creators" class="animate">The Creators of DaisyWorld</a>.</div>
-				</div>
-			</div>
-			
-			<div class="section" id="creators">
-				<div class="section-inner">
-					<h1>The Creators of DaisyWorld</h1>
-					<div class="previoussection">Previous section: <a href="#maths" class="animate">DaisyWorld Maths</a>.</div>
-					<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
 					<div class="nextsection">Next section: <a href="#critique" class="animate">Critiques of Daisy World</a>.</div>
 				</div>
 			</div>
@@ -286,8 +279,15 @@
 			<div class="section" id="critique">
 				<div class="section-inner">
 					<h1>Critiques of DaisyWorld</h1>
-					<div class="previoussection">Previous section: <a href="#creators" class="animate">The Creators of DaisyWorld</a>.</div>
-					<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+					<div class="previoussection">Previous section: <a href="#maths" class="animate">DaisyWorld Maths</a>.</div>
+					<div class="row">
+						<div class="span12">
+							<p>Both DaisyWorld and the Gaia theory have come under criticism in the past.</p>
+							<p>DaisyWorld has been seriously criticised for omitting key components of the Earth system as it is understood, such as a difference between species- and individual-level phenomena. These concerns were addressed in a 2011 paper by Lovelock and Lenton.</p>
+							<p>It has also been criticised for requiring the planet and its inhabitants to somehow agree on the best desired outcome, and for its inconsistency with natural selection (natural selection of planets would require evidence of planets which had not successfully been regulated by a Gaia process).</p>
+							<p>Gaia theory has been criticised by unnecessarily portraying the Earth as a living organism, which scientists claim has given laymen the wrong impression of how the Earth's systems work. The Gaia hypothesis, before it was recognised as a theory, was also been called "unscientific" for having an apparent connection to the real scenario without offering any mechanism which explains how it actually works.</p>
+						</div>
+					</div>
 					<div class="nextsection">Next section: <a href="#build" class="animate">Build your own DaisyWorld</a>.</div>
 				</div>
 			</div>
@@ -408,6 +408,14 @@
 							</div>
 						</div>
 					</div>
+					<div class="row">
+						<div class="span12">
+							<p>The mathematics for this simulation was based on that from Lovelock and Watson's original DaisyWorld paper. This is a completely novel implementation based solely on this mathematics.</p>
+							<p>There was a project to implement DaisyWorld in JavaScript <a href="https://github.com/doup/daisyworld.js" target="_blank">last modified over a year ago</a> which is incomplete and does not appear to work. The most complete DaisyWorld browser implementation <a href="http://gingerbooth.com/flash/daisyball/DaisyBall.html" target="_blank">is in Flash</a> by Ginger Booth and is closed-source, so of little community benefit.</p>
+							<p>This implementation is both open source and comes with a user experience designed to maximise user engagement and learning, unlike other web-based implementations.</p>
+							<p>Note that the DaisyWorld library itself is in the <a href="/js/daisyworld.js" target="_blank">js/daisyworld.js</a> file. The UI implementation and rendering is in the <a href="/js/daisymanager.js" target="_blank">js/daisymanager.js</a> file. Both of these files are completely novel to this site.</p>
+						</div>
+					</div>
 					<div class="nextsection">Next section: <a href="#references" class="animate">References</a>.</div>
 				</div>
 			</div>
@@ -420,19 +428,20 @@
 						<h2>DaisyWorld</h2>
 						<p>The following references were used for the DaisyWorld information and implementation:</p>
 						<ul>
-							<li>A. J. Watson, J. E. Lovelock: <a href="http://onlinelibrary.wiley.com/doi/10.1111/j.1600-0889.1983.tb00031.x/abstract">Biological homeostatis of the global environment: the parable of Daisyworld</a>, Tellus 35B (1983)</li>
-							<li><a href="http://www.personal.rdg.ac.uk/~shsmchlr/alife/index.htm">CY4F8 notes</a> - lecture notes outlining DaisyWorld by Richard Mitchell</li>
-							<li><a href="http://gingerbooth.com/flash/daisyball/daisyworldmath.html">DaisyWorld, the Math</a> - GingerBooth, 2010.</li>
+							<li>A. J. Watson, J. E. Lovelock: <a href="http://onlinelibrary.wiley.com/doi/10.1111/j.1600-0889.1983.tb00031.x/abstract" target="_blank">Biological homeostatis of the global environment: the parable of Daisyworld</a>, Tellus 35B (1983)</li>
+							<li>T. M. Lenton, J. E. Lovelock: <a href="http://www.tellusb.net/index.php/tellusb/article/view/16597" target="_blank">Daisyworld revisited: quantifying bilogical effects on planetary self-regulation</a>, Tellus 53B (2011)</li>
+							<li><a href="http://www.personal.rdg.ac.uk/~shsmchlr/alife/index.htm" target="_blank">CY4F8 notes</a> - lecture notes outlining DaisyWorld by Richard Mitchell</li>
+							<li><a href="http://gingerbooth.com/flash/daisyball/daisyworldmath.html" target="_blank">DaisyWorld, the Math</a> - Ginger Booth, 2010.</li>
 						</ul>
 						<h2>Web technology</h2>
 						<p>DaisyWorldWeb is built with the latest web technologies. It would not be possible without the following projects:</p>
 						<ul>
-							<li><a href="http://twitter.github.com/bootstrap/">Bootstrap</a> - a UX framework by Twitter</li>
-							<li><a href="http://jquery.com/">jQuery</a> - Javascript library for making UI work easy</li>
-							<li><a href="https://code.google.com/apis/chart/">Google Chart API</a> - for the pretty charts</li>
-							<li><a href="http://markdalgleish.com/projects/stellar.js/demos/">Stellar JS</a> - for the background planets</li>
-							<li><a href="http://flesler.blogspot.co.uk/2007/10/jqueryscrollto.html">ScrollTo</a> - for the nice scrolling effects on link clicks</li>
-							<li><a href="http://www.mathjax.org">MathJax</a> - equation rendering</li>
+							<li><a href="http://twitter.github.com/bootstrap/" target="_blank">Bootstrap</a> - a UX framework by Twitter</li>
+							<li><a href="http://jquery.com/" target="_blank">jQuery</a> - Javascript library for making UI work easy</li>
+							<li><a href="https://code.google.com/apis/chart/" target="_blank">Google Chart API</a> - for the pretty charts</li>
+							<li><a href="http://markdalgleish.com/projects/stellar.js/demos/" target="_blank">Stellar JS</a> - for moving the background planets</li>
+							<li><a href="http://flesler.blogspot.co.uk/2007/10/jqueryscrollto.html" target="_blank">ScrollTo</a> - for the nice scrolling effects on link clicks</li>
+							<li><a href="http://www.mathjax.org" target="_blank">MathJax</a> - equation rendering</li>
 						</ul>
 					</div>
 				</div>
@@ -458,7 +467,7 @@
 		<script src="js/daisyworld.js"></script>
 		<script src="js/daisymanager.js"></script>
 		
-		<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+		<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 		
 		<script>
 			var _gaq=[['_setAccount','UA-XXXXX-X'],['_trackPageview']];
