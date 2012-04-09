@@ -270,6 +270,7 @@
 							<p>$$ \Delta A_d = A_d((B_d S_s) - D) $$</p>
 							<p>Thus the area may simply be updated to the new value \(A_d^*\) by the formula:</p>
 							<p>$$ A_d^* = A_d + \Delta A_d $$</p>
+							<p>Note how this mathematical model does not restrict the number of daisy colours that are actually present. While Lovelock originally computed the simulation with two colours - mostly as little computer aid was available at the time - it extends seamlessly to additional daisy colours. This is possible to render in the interactive section following.</p>
 						</div>
 					</div>
 					<div class="nextsection">Next section: <a href="#critique" class="animate">Critiques of Daisy World</a>.</div>
@@ -295,7 +296,7 @@
 						</div>
 						<div class="span6">
 							<p>It has also been criticised for requiring the planet and its inhabitants to somehow agree on the best desired outcome, and for its inconsistency with natural selection (natural selection of planets would require evidence of planets which had not successfully been regulated by a Gaia process).</p>
-							<p>Gaia theory has been criticised by unnecessarily portraying the Earth as a living organism, which scientists claim has given laymen the wrong impression of how the Earth's systems work. The Gaia hypothesis, before it was recognised as a theory, was also been called "unscientific" for having an apparent connection to the real scenario without offering any mechanism which explains how it actually works.</p>
+							<p>Gaia theory has been criticised as unnecessarily portraying the Earth as a living organism, which some scientists claim has given laymen the wrong impression of how the Earth's systems work. The Gaia hypothesis, before it was recognised as a theory, was also called "unscientific" for having an apparent connection to the real scenario without offering any mechanism which explains how it actually works.</p>
 						</div>
 					</div>
 					<div class="nextsection">Next section: <a href="#build" class="animate">Build your own DaisyWorld</a>.</div>
@@ -309,7 +310,7 @@
 					<p class="leftmargin" style="clear: both;">Here you can create your own DaisyWorld.</p>
 					<p class="leftmargin">Start off by running the standard simulation with the blue button below. Then, you can create your own parameters for DaisyWorld.</p>
 					<div class="row highlight" id="simzone">
-						<div class="span4 hidden" style="text-align: center;">
+						<div class="span4" style="text-align: center;">
 							<button id="defaultrun" class="btn btn-primary btn-large" title="Click here to start with the default simulation" style="margin: 100px auto 0;">Run simulation</button>
 						</div>
 						<div class="span4 hidden hiddenfirstrow btntoggle">
@@ -363,7 +364,7 @@
 								</fieldset>
 							</form>
 						</div>
-						<div class="span4 hiddenfirstrow btntoggle">
+						<div class="span4 hidden hiddenfirstrow btntoggle">
 							<h2>Daisy Properties</h2>
 							<button class="btn btn-primary btn-small togglebtn" style="float: right; margin-top: 5px;">World Parameters</button>
 							<form class="form-horizontal" id="daisyform">
@@ -422,7 +423,7 @@
 					<div class="row">
 						<div class="span12">
 							<p>The mathematics for this simulation was based on that from Lovelock and Watson's original DaisyWorld paper. This is a completely novel implementation based solely on this mathematics. Their model is sufficiently generic such that more than two daisy species can be easily implemented, which is what has been done here.</p>
-							<p>There was a project to implement DaisyWorld in JavaScript <a href="https://github.com/doup/daisyworld.js" target="_blank">last modified over a year ago</a> which is incomplete and does not appear to work. The most complete DaisyWorld browser implementation <a href="http://gingerbooth.com/flash/daisyball/DaisyBall.html" target="_blank">is in Flash</a> by Ginger Booth and is closed-source, so of little community benefit.</p>
+							<p>There was a project to implement DaisyWorld in JavaScript <a href="https://github.com/doup/daisyworld.js" target="_blank">last modified over a year ago</a> which is incomplete and does not appear to work. The most complete DaisyWorld browser implementation <a href="http://gingerbooth.com/flash/daisyball/DaisyBall.html" target="_blank">is in Flash</a> by Ginger Booth and is closed-source, so of little community benefit. However the mathematical descriptions provided by this project did clarify some minor details which were omitted in the original paper.</p>
 							<p>This implementation is both open source and comes with a user experience designed to maximise user engagement and learning, unlike other web-based implementations.</p>
 							<p>Note that the DaisyWorld library itself is in the <a href="/js/daisyworld.js" target="_blank">js/daisyworld.js</a> file. The UI implementation and rendering is in the <a href="/js/daisymanager.js" target="_blank">js/daisymanager.js</a> file. Both of these files are completely novel to this site.</p>
 						</div>
