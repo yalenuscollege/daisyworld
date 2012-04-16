@@ -39,10 +39,14 @@ var DaisyManager = {
 	// Data for the table
 	tableData: [],
 	
+	// Are we in Firefox?
+	firefox: false,
+	
 	// Run on page load
 	load: function() {
 		this.reset();
 		this.setupHelp();
+		this.firefox = navigator.userAgent.indexOf("Firefox") > 0;
 		$("#interactive-go").on("click", function(e) {
 			e.preventDefault();
 			DaisyManager.interactive();
@@ -382,6 +386,10 @@ var DaisyManager = {
 		if (DaisyManager.renderStage >= DaisyManager.tempData.length || DaisyManager.stopRender) {
 			DaisyManager.simEnd();
 			DaisyManager.stopRender = false;
+			if (DaisyManager.firefox) {
+				DaisyManager.graph1.draw(DaisyManager.graph1data, DaisyManager.graph1options);
+				DaisyManager.graph2.draw(DaisyManager.graph2data, DaisyManager.graph2options);
+			}
 			return;
 		}
 	
@@ -403,8 +411,12 @@ var DaisyManager = {
 			daisyrow.push(DaisyManager.daisyData[key][DaisyManager.renderStage]);
 		}
 		DaisyManager.graph2data.addRow(daisyrow);
-		DaisyManager.graph1.draw(DaisyManager.graph1data, DaisyManager.graph1options);
-		DaisyManager.graph2.draw(DaisyManager.graph2data, DaisyManager.graph2options);		
+		if (!DaisyManager.firefox) {
+			DaisyManager.graph1.draw(DaisyManager.graph1data, DaisyManager.graph1options);
+			DaisyManager.graph2.draw(DaisyManager.graph2data, DaisyManager.graph2options);
+		} else {
+			$("#graph1").empty().append("Due to an SVG issue in Firefox, charts are rendered at the end. Please switch to Chrome or Internet Explorer for real-time renders.");
+		}
 	
 		// Update the table
 		var numbers = {};
@@ -415,7 +427,7 @@ var DaisyManager = {
 		DaisyManager.updateTable(numbers);
 	
 		DaisyManager.renderStage++;
-		window.setTimeout(DaisyManager.renderStep, 50);
+		window.setTimeout(DaisyManager.renderStep, 10);
 	},
 	
 	// Configures the various classes

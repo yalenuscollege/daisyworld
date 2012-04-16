@@ -224,6 +224,14 @@ div.section-inner .leftmargin {
 	background-image: url(../img/daisy-black.png);
 }
 
+legend {
+	margin-bottom: 0;
+}
+
+#simform, #daisyform {
+	clear: both;
+}
+
 #build .span4 h2 {
 	float: left;
 }
