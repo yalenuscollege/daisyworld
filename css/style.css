@@ -82,17 +82,15 @@ div.row div[class*="span"]:last-child > * {
 	margin-right: 30px;
 }
 
-div.row.highlight {
+div.row.highlight div[class*="span"] {
+	height: 460px;
+	padding: 20px 0 20px 15px;
+	overflow: hidden;
+	margin-left: 0;
 	background-color: #eee;
 	box-shadow: inset 0px 15px 20px -15px rgba(0,0,0,0.5), inset 0px -15px 20px -15px rgba(0,0,0,0.5);
 	border: 1px solid #000;
 	border-width: 1px 0;
-}
-
-div.row.highlight div[class*="span"] {
-	height: 460px;
-	padding: 20px 0;
-	overflow: hidden;
 }
 
 div.row.highlight > div[class*="span"]:first-child,
